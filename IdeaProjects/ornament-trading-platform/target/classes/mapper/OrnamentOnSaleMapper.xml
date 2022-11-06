@@ -1,0 +1,791 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.electronic.boot.mapper.OrnamentOnSaleMapper">
+  <resultMap id="BaseResultMap" type="com.electronic.boot.bean.OrnamentOnSale">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="icon_url" jdbcType="VARCHAR" property="iconUrl" />
+    <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+    <result column="category_internal_name" jdbcType="VARCHAR" property="categoryInternalName" />
+    <result column="category_localized_name" jdbcType="VARCHAR" property="categoryLocalizedName" />
+    <result column="category_group_id" jdbcType="INTEGER" property="categoryGroupId" />
+    <result column="category_group_internal_name" jdbcType="VARCHAR" property="categoryGroupInternalName" />
+    <result column="category_group_localized_name" jdbcType="VARCHAR" property="categoryGroupLocalizedName" />
+    <result column="exterior_id" jdbcType="INTEGER" property="exteriorId" />
+    <result column="exterior_internal_name" jdbcType="VARCHAR" property="exteriorInternalName" />
+    <result column="exterior_localized_name" jdbcType="VARCHAR" property="exteriorLocalizedName" />
+    <result column="itemset_id" jdbcType="INTEGER" property="itemsetId" />
+    <result column="itemset_internal_name" jdbcType="VARCHAR" property="itemsetInternalName" />
+    <result column="itemset_localized_name" jdbcType="VARCHAR" property="itemsetLocalizedName" />
+    <result column="quality_id" jdbcType="INTEGER" property="qualityId" />
+    <result column="quality_internal_name" jdbcType="VARCHAR" property="qualityInternalName" />
+    <result column="quality_localized_name" jdbcType="VARCHAR" property="qualityLocalizedName" />
+    <result column="rarity_id" jdbcType="INTEGER" property="rarityId" />
+    <result column="rarity_internal_name" jdbcType="VARCHAR" property="rarityInternalName" />
+    <result column="rarity_localized_name" jdbcType="VARCHAR" property="rarityLocalizedName" />
+    <result column="type_id" jdbcType="INTEGER" property="typeId" />
+    <result column="type_internal_name" jdbcType="VARCHAR" property="typeInternalName" />
+    <result column="type_localized_name" jdbcType="VARCHAR" property="typeLocalizedName" />
+    <result column="weapon_id" jdbcType="INTEGER" property="weaponId" />
+    <result column="weapon_internal_name" jdbcType="VARCHAR" property="weaponInternalName" />
+    <result column="weapon_localized_name" jdbcType="VARCHAR" property="weaponLocalizedName" />
+    <result column="weaponcase_id" jdbcType="INTEGER" property="weaponcaseId" />
+    <result column="weaponcase_internal_name" jdbcType="VARCHAR" property="weaponcaseInternalName" />
+    <result column="weaponcase_localized_name" jdbcType="VARCHAR" property="weaponcaseLocalizedName" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="paintindex" jdbcType="INTEGER" property="paintindex" />
+    <result column="paintseed" jdbcType="INTEGER" property="paintseed" />
+    <result column="paintwear" jdbcType="VARCHAR" property="paintwear" />
+    <result column="background_image_url" jdbcType="VARCHAR" property="backgroundImageUrl" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="fee" jdbcType="DECIMAL" property="fee" />
+    <result column="user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+    <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, name, price, icon_url, category_id, category_internal_name, category_localized_name, 
+    category_group_id, category_group_internal_name, category_group_localized_name, exterior_id, 
+    exterior_internal_name, exterior_localized_name, itemset_id, itemset_internal_name, 
+    itemset_localized_name, quality_id, quality_internal_name, quality_localized_name, 
+    rarity_id, rarity_internal_name, rarity_localized_name, type_id, type_internal_name, 
+    type_localized_name, weapon_id, weapon_internal_name, weapon_localized_name, weaponcase_id, 
+    weaponcase_internal_name, weaponcase_localized_name, goods_id, paintindex, paintseed, 
+    paintwear, background_image_url, description, fee, user_id, avatar, nickname
+  </sql>
+  <select id="selectByExample" parameterType="com.electronic.boot.bean.OrnamentOnSaleExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ornament_on_sale
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ornament_on_sale
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ornament_on_sale
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.electronic.boot.bean.OrnamentOnSaleExample">
+    delete from ornament_on_sale
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.electronic.boot.bean.OrnamentOnSale">
+    insert into ornament_on_sale (id, name, price, 
+      icon_url, category_id, category_internal_name, 
+      category_localized_name, category_group_id, 
+      category_group_internal_name, category_group_localized_name, 
+      exterior_id, exterior_internal_name, exterior_localized_name, 
+      itemset_id, itemset_internal_name, itemset_localized_name, 
+      quality_id, quality_internal_name, quality_localized_name, 
+      rarity_id, rarity_internal_name, rarity_localized_name, 
+      type_id, type_internal_name, type_localized_name, 
+      weapon_id, weapon_internal_name, weapon_localized_name, 
+      weaponcase_id, weaponcase_internal_name, weaponcase_localized_name, 
+      goods_id, paintindex, paintseed, 
+      paintwear, background_image_url, description, 
+      fee, user_id, avatar, 
+      nickname)
+    values (#{id,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{price,jdbcType=DECIMAL}, 
+      #{iconUrl,jdbcType=VARCHAR}, #{categoryId,jdbcType=INTEGER}, #{categoryInternalName,jdbcType=VARCHAR}, 
+      #{categoryLocalizedName,jdbcType=VARCHAR}, #{categoryGroupId,jdbcType=INTEGER}, 
+      #{categoryGroupInternalName,jdbcType=VARCHAR}, #{categoryGroupLocalizedName,jdbcType=VARCHAR}, 
+      #{exteriorId,jdbcType=INTEGER}, #{exteriorInternalName,jdbcType=VARCHAR}, #{exteriorLocalizedName,jdbcType=VARCHAR}, 
+      #{itemsetId,jdbcType=INTEGER}, #{itemsetInternalName,jdbcType=VARCHAR}, #{itemsetLocalizedName,jdbcType=VARCHAR}, 
+      #{qualityId,jdbcType=INTEGER}, #{qualityInternalName,jdbcType=VARCHAR}, #{qualityLocalizedName,jdbcType=VARCHAR}, 
+      #{rarityId,jdbcType=INTEGER}, #{rarityInternalName,jdbcType=VARCHAR}, #{rarityLocalizedName,jdbcType=VARCHAR}, 
+      #{typeId,jdbcType=INTEGER}, #{typeInternalName,jdbcType=VARCHAR}, #{typeLocalizedName,jdbcType=VARCHAR}, 
+      #{weaponId,jdbcType=INTEGER}, #{weaponInternalName,jdbcType=VARCHAR}, #{weaponLocalizedName,jdbcType=VARCHAR}, 
+      #{weaponcaseId,jdbcType=INTEGER}, #{weaponcaseInternalName,jdbcType=VARCHAR}, #{weaponcaseLocalizedName,jdbcType=VARCHAR}, 
+      #{goodsId,jdbcType=INTEGER}, #{paintindex,jdbcType=INTEGER}, #{paintseed,jdbcType=INTEGER}, 
+      #{paintwear,jdbcType=VARCHAR}, #{backgroundImageUrl,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{fee,jdbcType=DECIMAL}, #{userId,jdbcType=VARCHAR}, #{avatar,jdbcType=VARCHAR}, 
+      #{nickname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.electronic.boot.bean.OrnamentOnSale">
+    insert into ornament_on_sale
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="iconUrl != null">
+        icon_url,
+      </if>
+      <if test="categoryId != null">
+        category_id,
+      </if>
+      <if test="categoryInternalName != null">
+        category_internal_name,
+      </if>
+      <if test="categoryLocalizedName != null">
+        category_localized_name,
+      </if>
+      <if test="categoryGroupId != null">
+        category_group_id,
+      </if>
+      <if test="categoryGroupInternalName != null">
+        category_group_internal_name,
+      </if>
+      <if test="categoryGroupLocalizedName != null">
+        category_group_localized_name,
+      </if>
+      <if test="exteriorId != null">
+        exterior_id,
+      </if>
+      <if test="exteriorInternalName != null">
+        exterior_internal_name,
+      </if>
+      <if test="exteriorLocalizedName != null">
+        exterior_localized_name,
+      </if>
+      <if test="itemsetId != null">
+        itemset_id,
+      </if>
+      <if test="itemsetInternalName != null">
+        itemset_internal_name,
+      </if>
+      <if test="itemsetLocalizedName != null">
+        itemset_localized_name,
+      </if>
+      <if test="qualityId != null">
+        quality_id,
+      </if>
+      <if test="qualityInternalName != null">
+        quality_internal_name,
+      </if>
+      <if test="qualityLocalizedName != null">
+        quality_localized_name,
+      </if>
+      <if test="rarityId != null">
+        rarity_id,
+      </if>
+      <if test="rarityInternalName != null">
+        rarity_internal_name,
+      </if>
+      <if test="rarityLocalizedName != null">
+        rarity_localized_name,
+      </if>
+      <if test="typeId != null">
+        type_id,
+      </if>
+      <if test="typeInternalName != null">
+        type_internal_name,
+      </if>
+      <if test="typeLocalizedName != null">
+        type_localized_name,
+      </if>
+      <if test="weaponId != null">
+        weapon_id,
+      </if>
+      <if test="weaponInternalName != null">
+        weapon_internal_name,
+      </if>
+      <if test="weaponLocalizedName != null">
+        weapon_localized_name,
+      </if>
+      <if test="weaponcaseId != null">
+        weaponcase_id,
+      </if>
+      <if test="weaponcaseInternalName != null">
+        weaponcase_internal_name,
+      </if>
+      <if test="weaponcaseLocalizedName != null">
+        weaponcase_localized_name,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="paintindex != null">
+        paintindex,
+      </if>
+      <if test="paintseed != null">
+        paintseed,
+      </if>
+      <if test="paintwear != null">
+        paintwear,
+      </if>
+      <if test="backgroundImageUrl != null">
+        background_image_url,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="fee != null">
+        fee,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="avatar != null">
+        avatar,
+      </if>
+      <if test="nickname != null">
+        nickname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="iconUrl != null">
+        #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryInternalName != null">
+        #{categoryInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryLocalizedName != null">
+        #{categoryLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryGroupId != null">
+        #{categoryGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryGroupInternalName != null">
+        #{categoryGroupInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryGroupLocalizedName != null">
+        #{categoryGroupLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="exteriorId != null">
+        #{exteriorId,jdbcType=INTEGER},
+      </if>
+      <if test="exteriorInternalName != null">
+        #{exteriorInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="exteriorLocalizedName != null">
+        #{exteriorLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemsetId != null">
+        #{itemsetId,jdbcType=INTEGER},
+      </if>
+      <if test="itemsetInternalName != null">
+        #{itemsetInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemsetLocalizedName != null">
+        #{itemsetLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="qualityId != null">
+        #{qualityId,jdbcType=INTEGER},
+      </if>
+      <if test="qualityInternalName != null">
+        #{qualityInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="qualityLocalizedName != null">
+        #{qualityLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="rarityId != null">
+        #{rarityId,jdbcType=INTEGER},
+      </if>
+      <if test="rarityInternalName != null">
+        #{rarityInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="rarityLocalizedName != null">
+        #{rarityLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="typeInternalName != null">
+        #{typeInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeLocalizedName != null">
+        #{typeLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponId != null">
+        #{weaponId,jdbcType=INTEGER},
+      </if>
+      <if test="weaponInternalName != null">
+        #{weaponInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponLocalizedName != null">
+        #{weaponLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponcaseId != null">
+        #{weaponcaseId,jdbcType=INTEGER},
+      </if>
+      <if test="weaponcaseInternalName != null">
+        #{weaponcaseInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponcaseLocalizedName != null">
+        #{weaponcaseLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="paintindex != null">
+        #{paintindex,jdbcType=INTEGER},
+      </if>
+      <if test="paintseed != null">
+        #{paintseed,jdbcType=INTEGER},
+      </if>
+      <if test="paintwear != null">
+        #{paintwear,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundImageUrl != null">
+        #{backgroundImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="fee != null">
+        #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        #{nickname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.electronic.boot.bean.OrnamentOnSaleExample" resultType="java.lang.Long">
+    select count(*) from ornament_on_sale
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <select id="getEveryExteriorGoods" resultType="java.util.Map">
+    SELECT oos.`goods_id`,oos.`name`,MIN(oos.`price`) AS price
+    FROM ornament_on_sale oos
+    WHERE NAME LIKE #{name}
+    GROUP BY NAME
+    ORDER BY price desc
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ornament_on_sale
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.iconUrl != null">
+        icon_url = #{record.iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.categoryId != null">
+        category_id = #{record.categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="record.categoryInternalName != null">
+        category_internal_name = #{record.categoryInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.categoryLocalizedName != null">
+        category_localized_name = #{record.categoryLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.categoryGroupId != null">
+        category_group_id = #{record.categoryGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="record.categoryGroupInternalName != null">
+        category_group_internal_name = #{record.categoryGroupInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.categoryGroupLocalizedName != null">
+        category_group_localized_name = #{record.categoryGroupLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.exteriorId != null">
+        exterior_id = #{record.exteriorId,jdbcType=INTEGER},
+      </if>
+      <if test="record.exteriorInternalName != null">
+        exterior_internal_name = #{record.exteriorInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.exteriorLocalizedName != null">
+        exterior_localized_name = #{record.exteriorLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemsetId != null">
+        itemset_id = #{record.itemsetId,jdbcType=INTEGER},
+      </if>
+      <if test="record.itemsetInternalName != null">
+        itemset_internal_name = #{record.itemsetInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemsetLocalizedName != null">
+        itemset_localized_name = #{record.itemsetLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qualityId != null">
+        quality_id = #{record.qualityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.qualityInternalName != null">
+        quality_internal_name = #{record.qualityInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.qualityLocalizedName != null">
+        quality_localized_name = #{record.qualityLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rarityId != null">
+        rarity_id = #{record.rarityId,jdbcType=INTEGER},
+      </if>
+      <if test="record.rarityInternalName != null">
+        rarity_internal_name = #{record.rarityInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.rarityLocalizedName != null">
+        rarity_localized_name = #{record.rarityLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typeId != null">
+        type_id = #{record.typeId,jdbcType=INTEGER},
+      </if>
+      <if test="record.typeInternalName != null">
+        type_internal_name = #{record.typeInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.typeLocalizedName != null">
+        type_localized_name = #{record.typeLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weaponId != null">
+        weapon_id = #{record.weaponId,jdbcType=INTEGER},
+      </if>
+      <if test="record.weaponInternalName != null">
+        weapon_internal_name = #{record.weaponInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weaponLocalizedName != null">
+        weapon_localized_name = #{record.weaponLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weaponcaseId != null">
+        weaponcase_id = #{record.weaponcaseId,jdbcType=INTEGER},
+      </if>
+      <if test="record.weaponcaseInternalName != null">
+        weaponcase_internal_name = #{record.weaponcaseInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.weaponcaseLocalizedName != null">
+        weaponcase_localized_name = #{record.weaponcaseLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsId != null">
+        goods_id = #{record.goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.paintindex != null">
+        paintindex = #{record.paintindex,jdbcType=INTEGER},
+      </if>
+      <if test="record.paintseed != null">
+        paintseed = #{record.paintseed,jdbcType=INTEGER},
+      </if>
+      <if test="record.paintwear != null">
+        paintwear = #{record.paintwear,jdbcType=VARCHAR},
+      </if>
+      <if test="record.backgroundImageUrl != null">
+        background_image_url = #{record.backgroundImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.description != null">
+        description = #{record.description,jdbcType=VARCHAR},
+      </if>
+      <if test="record.fee != null">
+        fee = #{record.fee,jdbcType=DECIMAL},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.avatar != null">
+        avatar = #{record.avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.nickname != null">
+        nickname = #{record.nickname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ornament_on_sale
+    set id = #{record.id,jdbcType=INTEGER},
+      name = #{record.name,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DECIMAL},
+      icon_url = #{record.iconUrl,jdbcType=VARCHAR},
+      category_id = #{record.categoryId,jdbcType=INTEGER},
+      category_internal_name = #{record.categoryInternalName,jdbcType=VARCHAR},
+      category_localized_name = #{record.categoryLocalizedName,jdbcType=VARCHAR},
+      category_group_id = #{record.categoryGroupId,jdbcType=INTEGER},
+      category_group_internal_name = #{record.categoryGroupInternalName,jdbcType=VARCHAR},
+      category_group_localized_name = #{record.categoryGroupLocalizedName,jdbcType=VARCHAR},
+      exterior_id = #{record.exteriorId,jdbcType=INTEGER},
+      exterior_internal_name = #{record.exteriorInternalName,jdbcType=VARCHAR},
+      exterior_localized_name = #{record.exteriorLocalizedName,jdbcType=VARCHAR},
+      itemset_id = #{record.itemsetId,jdbcType=INTEGER},
+      itemset_internal_name = #{record.itemsetInternalName,jdbcType=VARCHAR},
+      itemset_localized_name = #{record.itemsetLocalizedName,jdbcType=VARCHAR},
+      quality_id = #{record.qualityId,jdbcType=INTEGER},
+      quality_internal_name = #{record.qualityInternalName,jdbcType=VARCHAR},
+      quality_localized_name = #{record.qualityLocalizedName,jdbcType=VARCHAR},
+      rarity_id = #{record.rarityId,jdbcType=INTEGER},
+      rarity_internal_name = #{record.rarityInternalName,jdbcType=VARCHAR},
+      rarity_localized_name = #{record.rarityLocalizedName,jdbcType=VARCHAR},
+      type_id = #{record.typeId,jdbcType=INTEGER},
+      type_internal_name = #{record.typeInternalName,jdbcType=VARCHAR},
+      type_localized_name = #{record.typeLocalizedName,jdbcType=VARCHAR},
+      weapon_id = #{record.weaponId,jdbcType=INTEGER},
+      weapon_internal_name = #{record.weaponInternalName,jdbcType=VARCHAR},
+      weapon_localized_name = #{record.weaponLocalizedName,jdbcType=VARCHAR},
+      weaponcase_id = #{record.weaponcaseId,jdbcType=INTEGER},
+      weaponcase_internal_name = #{record.weaponcaseInternalName,jdbcType=VARCHAR},
+      weaponcase_localized_name = #{record.weaponcaseLocalizedName,jdbcType=VARCHAR},
+      goods_id = #{record.goodsId,jdbcType=INTEGER},
+      paintindex = #{record.paintindex,jdbcType=INTEGER},
+      paintseed = #{record.paintseed,jdbcType=INTEGER},
+      paintwear = #{record.paintwear,jdbcType=VARCHAR},
+      background_image_url = #{record.backgroundImageUrl,jdbcType=VARCHAR},
+      description = #{record.description,jdbcType=VARCHAR},
+      fee = #{record.fee,jdbcType=DECIMAL},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      avatar = #{record.avatar,jdbcType=VARCHAR},
+      nickname = #{record.nickname,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.electronic.boot.bean.OrnamentOnSale">
+    update ornament_on_sale
+    <set>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="iconUrl != null">
+        icon_url = #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryId != null">
+        category_id = #{categoryId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryInternalName != null">
+        category_internal_name = #{categoryInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryLocalizedName != null">
+        category_localized_name = #{categoryLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryGroupId != null">
+        category_group_id = #{categoryGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="categoryGroupInternalName != null">
+        category_group_internal_name = #{categoryGroupInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryGroupLocalizedName != null">
+        category_group_localized_name = #{categoryGroupLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="exteriorId != null">
+        exterior_id = #{exteriorId,jdbcType=INTEGER},
+      </if>
+      <if test="exteriorInternalName != null">
+        exterior_internal_name = #{exteriorInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="exteriorLocalizedName != null">
+        exterior_localized_name = #{exteriorLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemsetId != null">
+        itemset_id = #{itemsetId,jdbcType=INTEGER},
+      </if>
+      <if test="itemsetInternalName != null">
+        itemset_internal_name = #{itemsetInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="itemsetLocalizedName != null">
+        itemset_localized_name = #{itemsetLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="qualityId != null">
+        quality_id = #{qualityId,jdbcType=INTEGER},
+      </if>
+      <if test="qualityInternalName != null">
+        quality_internal_name = #{qualityInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="qualityLocalizedName != null">
+        quality_localized_name = #{qualityLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="rarityId != null">
+        rarity_id = #{rarityId,jdbcType=INTEGER},
+      </if>
+      <if test="rarityInternalName != null">
+        rarity_internal_name = #{rarityInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="rarityLocalizedName != null">
+        rarity_localized_name = #{rarityLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeId != null">
+        type_id = #{typeId,jdbcType=INTEGER},
+      </if>
+      <if test="typeInternalName != null">
+        type_internal_name = #{typeInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="typeLocalizedName != null">
+        type_localized_name = #{typeLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponId != null">
+        weapon_id = #{weaponId,jdbcType=INTEGER},
+      </if>
+      <if test="weaponInternalName != null">
+        weapon_internal_name = #{weaponInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponLocalizedName != null">
+        weapon_localized_name = #{weaponLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponcaseId != null">
+        weaponcase_id = #{weaponcaseId,jdbcType=INTEGER},
+      </if>
+      <if test="weaponcaseInternalName != null">
+        weaponcase_internal_name = #{weaponcaseInternalName,jdbcType=VARCHAR},
+      </if>
+      <if test="weaponcaseLocalizedName != null">
+        weaponcase_localized_name = #{weaponcaseLocalizedName,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="paintindex != null">
+        paintindex = #{paintindex,jdbcType=INTEGER},
+      </if>
+      <if test="paintseed != null">
+        paintseed = #{paintseed,jdbcType=INTEGER},
+      </if>
+      <if test="paintwear != null">
+        paintwear = #{paintwear,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundImageUrl != null">
+        background_image_url = #{backgroundImageUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="fee != null">
+        fee = #{fee,jdbcType=DECIMAL},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="avatar != null">
+        avatar = #{avatar,jdbcType=VARCHAR},
+      </if>
+      <if test="nickname != null">
+        nickname = #{nickname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.electronic.boot.bean.OrnamentOnSale">
+    update ornament_on_sale
+    set name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      icon_url = #{iconUrl,jdbcType=VARCHAR},
+      category_id = #{categoryId,jdbcType=INTEGER},
+      category_internal_name = #{categoryInternalName,jdbcType=VARCHAR},
+      category_localized_name = #{categoryLocalizedName,jdbcType=VARCHAR},
+      category_group_id = #{categoryGroupId,jdbcType=INTEGER},
+      category_group_internal_name = #{categoryGroupInternalName,jdbcType=VARCHAR},
+      category_group_localized_name = #{categoryGroupLocalizedName,jdbcType=VARCHAR},
+      exterior_id = #{exteriorId,jdbcType=INTEGER},
+      exterior_internal_name = #{exteriorInternalName,jdbcType=VARCHAR},
+      exterior_localized_name = #{exteriorLocalizedName,jdbcType=VARCHAR},
+      itemset_id = #{itemsetId,jdbcType=INTEGER},
+      itemset_internal_name = #{itemsetInternalName,jdbcType=VARCHAR},
+      itemset_localized_name = #{itemsetLocalizedName,jdbcType=VARCHAR},
+      quality_id = #{qualityId,jdbcType=INTEGER},
+      quality_internal_name = #{qualityInternalName,jdbcType=VARCHAR},
+      quality_localized_name = #{qualityLocalizedName,jdbcType=VARCHAR},
+      rarity_id = #{rarityId,jdbcType=INTEGER},
+      rarity_internal_name = #{rarityInternalName,jdbcType=VARCHAR},
+      rarity_localized_name = #{rarityLocalizedName,jdbcType=VARCHAR},
+      type_id = #{typeId,jdbcType=INTEGER},
+      type_internal_name = #{typeInternalName,jdbcType=VARCHAR},
+      type_localized_name = #{typeLocalizedName,jdbcType=VARCHAR},
+      weapon_id = #{weaponId,jdbcType=INTEGER},
+      weapon_internal_name = #{weaponInternalName,jdbcType=VARCHAR},
+      weapon_localized_name = #{weaponLocalizedName,jdbcType=VARCHAR},
+      weaponcase_id = #{weaponcaseId,jdbcType=INTEGER},
+      weaponcase_internal_name = #{weaponcaseInternalName,jdbcType=VARCHAR},
+      weaponcase_localized_name = #{weaponcaseLocalizedName,jdbcType=VARCHAR},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      paintindex = #{paintindex,jdbcType=INTEGER},
+      paintseed = #{paintseed,jdbcType=INTEGER},
+      paintwear = #{paintwear,jdbcType=VARCHAR},
+      background_image_url = #{backgroundImageUrl,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      fee = #{fee,jdbcType=DECIMAL},
+      user_id = #{userId,jdbcType=VARCHAR},
+      avatar = #{avatar,jdbcType=VARCHAR},
+      nickname = #{nickname,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,393 @@
+<!doctype html>
+<!--
+* Tabler - Premium and Open Source dashboard template with responsive and high quality UI.
+* @version 1.0.0-beta10
+* @link https://tabler.io
+* Copyright 2018-2022 The Tabler Authors
+* Copyright 2018-2022 codecalm.net Paweł Kuna
+* Licensed under MIT (https://github.com/tabler/tabler/blob/master/LICENSE)
+-->
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Empty page - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <!-- CSS files -->
+    <link rel="stylesheet" th:href="@{/dist/css/main.css}">
+    <!--使用th:block标签将公共css文件引入-->
+    <th:block th:replace="common :: common-css"></th:block>
+</head>
+<body>
+<div class="page">
+    <!--引入公共部分-->
+    <header th:replace="common :: #header-tabler"></header>
+    <div th:replace="common :: #header-search"></div>
+    <div class="page-wrapper">
+        <div class="container-xl">
+            <!-- Page title -->
+            <div class="page-header d-print-none">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <h2 class="page-title">
+                            Profile & account
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-body">
+            <div class="container-xl">
+                <div class="l_Layout">
+                    <div class="cont_panel black">
+                        <div class="my-thum"><img src="" width="70" height="70">
+                            <h2><strong data-profile-nickname="true" class="username">electroXic</strong></h2>
+                            <div class="vip-mark "><a class="vip-mark_off"
+                                                      href="https://buff.163.com/user-center/asset/recharge/#"> <i
+                                    class="icon icon_vip"></i>开通会员<i class="icon icon_arr_right"></i> </a></div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="my-menu">
+                            <ul>
+                                <li class="on"><a href="https://buff.163.com/user-center/asset/recharge/"><i
+                                        class="icon icon_menu icon_menu_wallet"></i>我的钱包</a></li>
+                                <li><a href=""><i class="icon icon_menu icon_menu_setting"></i>帐号设置</a>
+                                </li>
+                                <li><a href=""><i
+                                        class="icon icon_menu icon_menu_msg"></i>消息中心<i class="icon icon_new"
+                                                                                        style="display: none;"></i></a>
+                                </li>
+                                <li><a href=""><i
+                                        class="icon icon_menu icon_menu_fav"></i>我的收藏</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="cont_main">
+                        <div class="user-header black">
+                            <div style="margin-top: 15px;padding-left: 80px;">
+                                <div class="col">
+                                    <div class="icon icon_balance_alipay"></div>
+                                    <div class="info">
+                                        <div class="f_12px" style="margin-bottom: 6px">BUFF余额 <a style="color: #4773C8;"
+                                                                                                 href="javascript:;"
+                                                                                                 class="j_tips_handler"
+                                                                                                 data-title="BUFF余额-支付宝"
+                                                                                                 data-content="1. 支付宝余额可用于购买饰品，或提现到支付宝
+2. 通过花呗信用卡充值到BUFF的余额不可提现
+" data-direction="right">支付宝</a></div>
+                                        <div style="margin-top: 4px;"><strong class="f_Strong f_18px"
+                                                                              id="alipay_amount">¥
+                                            39.05</strong></div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <div class="icon icon_balance_bank"></div>
+                                    <div class="info">
+                                        <div class="f_12px" style="margin-bottom: 6px">BUFF余额 <a style="color: #4773C8;"
+                                                                                                 href="javascript:;"
+                                                                                                 class="j_tips_handler"
+                                                                                                 data-title="BUFF余额-银行卡"
+                                                                                                 data-content="1. 其他用户使用BUFF余额-银行卡和微信支付购买你饰品的收入
+2. 可购买饰品，或提现到银行卡
+" data-direction="right">其它</a></div>
+                                        <div style="margin-top: 4px;"><strong class="f_Strong f_18px" id="cash_amount">¥
+                                            14.28</strong>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col" style="border: 0;">
+                                    <div class="info">
+                                        <div class="f_12px" style="margin-bottom: 6px">锁定余额<a href="javascript:;"
+                                                                                              class="j_tips_handler"
+                                                                                              data-title="锁定余额"
+                                                                                              data-content="发布求购、发起还价会冻结相应金额，包含支付宝和银行卡余额。"
+                                                                                              data-direction="right"><i
+                                                class="icon icon_qa"></i></a></div>
+                                        <div style="margin-top: 4px;"><strong class="f_Strong f_18px" id="frozen_amount"
+                                                                              style="color: #4886FF">¥ 0</strong></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="blank20"></div>
+                        <div class="block-header black">
+                            <ul class="tab">
+                                <li class="on" href="/user-center/asset/recharge/">充值</li>
+                                <li href="/user-center/asset/">资金流水</li>
+                            </ul>
+                        </div>
+                        <div class="user-wallet" style="display:block">
+                            <table class="l_Tb wallet_Tb" width="100%">
+                                <tbody>
+                                <form id="payForm" th:action="@{/pay}" method="post">
+                                    <input id="userIdToUse" type="hidden" name="userId" value="">
+                                <tr>
+                                    <td width="64" class="c_Gray f_14px">充值金额</td>
+                                    <td>
+                                        <div class="w-Tag w-Tag_big" id="amount_list" value="custom">
+                                            <span value="custom" class="rechargeSpan"><input type="text"
+                                                                class="i_Text"
+                                                                placeholder="请输入充值金额"
+                                                                name="rechargeAmount"
+                                                                style="font-size: 14px"
+                                                                pattened="true"></span>
+                                            <span value="100" width="84">¥ 100<i
+                                                    class="icon icon_check_small"></i></span>
+                                            <span value="500" width="84">¥ 500<i
+                                                    class="icon icon_check_small"></i></span> <span
+                                                    value="1000" width="84">¥ 1000<i class="icon icon_check_small"></i></span>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td width="64" class="c_Gray f_14px">充值方式</td>
+                                    <td id="recharge_method">
+                                        <div class="pay-way">
+                                            <ul>
+                                                <li class="on" value="4"><i class="icon icon_select_alipay"></i> 支付宝 <i
+                                                        class="icon icon_check_small"></i></li>
+                                            </ul>
+                                            <div class="clear"></div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td>
+                                        <div><a href="javascript:void(0);" class="i_Btn i_Btn_main"
+                                                id="send_recharge_authcode" onclick="ackRecharge()">
+                                            确认充值</a>
+                                        </div>
+                                    </td>
+                                </tr>
+                                </form>
+                                </tbody>
+
+                            </table>
+                            <br><br>
+                            <div class="user-wallet-section">
+                                <div class="user-pay-desc">
+                                    <div class="line"></div>
+                                    <div class="blank20"></div>
+                                    <div class="blank20"></div>
+                                    <ul id="notice-alipay">
+                                        <li>充值须知</li>
+                                        <li>1. 单笔限额5-20000元；</li>
+                                        <li>2. 充值退款或提现会产生1%服务费；</li>
+                                        <li>3. 帐号违规资金转移套现将被冻结处理。</li>
+                                    </ul>
+                                    <div class="blank20"></div>
+                                    <div class="blank20"></div>
+                                    <div class="line"></div>
+                                </div>
+                            </div>
+                            <div class="user-wallet-section" id="recharge_logs"><h2>充值记录</h2>
+                                <div class="nodata" style="display: none;">暂无记录</div>
+                                <table class="list_tb" width="100%" style="">
+                                    <tbody>
+                                    <tr class="t_Center">
+                                        <th width="230">流水号</th>
+                                        <th width="150">充值金额(元)</th>
+                                        <th>付款账户</th>
+                                        <th width="120">进度</th>
+                                        <th width="230">创建时间</th>
+                                    </tr>
+                                    </tbody>
+<!--                                    <tr recharge_id="220718R1170049831" state="SUCCESS">-->
+<!--                                        <td class="c_Gray">220718R1170049831</td>-->
+<!--                                        <td><strong class="f_Strong">34</strong></td>-->
+<!--                                        <td class="c_Gray">支付宝</td>-->
+<!--                                        <td class="c_Gray">充值成功</td>-->
+<!--                                        <td class="c_Gray">2022-07-18 21:32</td>-->
+<!--                                    </tr>-->
+                                </table>
+                                <div class="blank20"></div>
+                                <div class="blank20"></div>
+                                <div class="pager light-theme simple-pagination">
+                                    <ul>
+                                        <li class="disabled"><span class="current prev">上一页</span></li>
+                                        <li class="active"><span class="current">1</span></li>
+                                        <li><a href=""
+                                               class="page-link">2</a></li>
+                                        <li><a href=""
+                                               class="page-link next">下一页</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clear"></div>
+                </div>
+            </div>
+            <footer class="footer footer-transparent d-print-none">
+                <div class="container-xl">
+                    <div class="row text-center align-items-center flex-row-reverse">
+                        <div class="col-lg-auto ms-lg-auto">
+                            <ul class="list-inline list-inline-dots mb-0">
+                                <li class="list-inline-item"><a href="./docs/index.html" class="link-secondary">Documentation</a>
+                                </li>
+                                <li class="list-inline-item"><a href="./license.html" class="link-secondary">License</a>
+                                </li>
+                                <li class="list-inline-item"><a href="https://github.com/tabler/tabler" target="_blank"
+                                                                class="link-secondary" rel="noopener">Source code</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://github.com/sponsors/codecalm" target="_blank"
+                                       class="link-secondary" rel="noopener">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             class="icon text-pink icon-filled icon-inline" width="24" height="24"
+                                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                             stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"/>
+                                        </svg>
+                                        Sponsor
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                            <ul class="list-inline list-inline-dots mb-0">
+                                <li class="list-inline-item">
+                                    Copyright &copy; 2022
+                                    <a href="." class="link-secondary">Tabler</a>.
+                                    All rights reserved.
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="./changelog.html" class="link-secondary" rel="noopener">
+                                        v1.0.0-beta10
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+    <!-- Libs JS -->
+    <!-- Tabler Core -->
+    <th:block th:replace="common :: #common-scripts"></th:block>
+</body>
+</html>
+<script th:src="@{/jquery/jquery-3.6.0.min.js}"></script>
+<script>
+    var userid = "";
+    function askForUserData(){
+        $.ajax({
+            url: `/user/getUserById/${userid}`,
+            type: "GET",
+            // data表示发送的数据
+            // 定义发送请求的数据格式为JSON字符串
+            contentType: "application/json;charset=UTF-8",
+            //定义回调响应的数据格式为JSON字符串，该属性可以省略
+            dataType: "json",
+            //成功响应的结果
+            success: function (data) {
+                if (data.code == 200) {
+                    console.log(data);
+                    renderUserData(data);
+                }
+            }
+        })
+    }
+    function ackRecharge(){
+        $("#userIdToUse")[0].value = userid;
+        $("#payForm")[0].submit();
+    }
+    function askForRechargeData(pageNum){
+        $.ajax({
+            url: `/rechargeRecord/getAllRechargeRecord/${userid}`,
+            type: "GET",
+            // data表示发送的数据
+            data: {
+                pageNum: pageNum,
+                pageSize: 5
+            },
+            // 定义发送请求的数据格式为JSON字符串
+            contentType: "application/json;charset=UTF-8",
+            //定义回调响应的数据格式为JSON字符串，该属性可以省略
+            dataType: "json",
+            //成功响应的结果
+            success: function (data) {
+                if (data.code == 200) {
+                    console.log(data);
+                    renderRechargeData(data);
+                }
+            }
+        })
+    }
+    window.onload = function () {
+        userid = $("#user_detail")[0].getAttribute("data-userid");
+        askForUserData()
+        askForRechargeData(1)
+    };
+
+    function renderUserData(data){
+        var data = data.data;
+        $(".my-thum > img")[0].src = data.avatar;
+        $(".my-thum .username")[0].innerText = data.username
+        $("#alipay_amount")[0].innerText = '￥ ' + data.balance
+    }
+
+    function renderRechargeData(data){
+        var pageInfo = data.data;
+        var dataList = pageInfo.list;
+        rechargeDataStr = '<tbody>\n' +
+            '                                    <tr class="t_Center">\n' +
+            '                                        <th width="230">流水号</th>\n' +
+            '                                        <th width="150">充值金额(元)</th>\n' +
+            '                                        <th>付款账户</th>\n' +
+            '                                        <th width="120">进度</th>\n' +
+            '                                        <th width="230">创建时间</th>\n' +
+            '                                    </tr>\n' +
+            '                                    </tbody>'
+        for (let i = 0; i < dataList.length; i++) {
+            rechargeDataStr +='<tr recharge_id="'+dataList[i].serialNumber+'" state="SUCCESS">\n' +
+                '                                        <td class="c_Gray">'+dataList[i].serialNumber+'</td>\n' +
+                '                                        <td><strong class="f_Strong">'+dataList[i].rechargeAmount+'</strong></td>\n' +
+                '                                        <td class="c_Gray">'+dataList[i].paymentAccount+'</td>\n' +
+                '                                        <td class="c_Gray">'+dataList[i].rechargeStatus+'</td>\n' +
+                '                                        <td class="c_Gray">'+dataList[i].createTime+'</td>\n' +
+                '                                    </tr>'
+        }
+        $(".list_tb")[0].innerHTML = rechargeDataStr;
+        var pageDataStr = ""
+        if (pageInfo.isFirstPage)
+            pageDataStr += '<li class="disabled"><span class="current prev">上一页</span></li>'
+        else
+            pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + pageInfo.prePage + ')" class="page-link prev">上一页</a></li>'
+
+        for (let currentPageNum = 1; currentPageNum <= pageInfo.navigatepageNums.length; currentPageNum++) {
+            if (pageInfo.pageNum == currentPageNum) {
+                currentPage = currentPageNum;
+                pageDataStr += '<li class="active"><span class="current">' + currentPageNum + '</span></li>';
+            } else
+                pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + currentPageNum + ')" className="page-link">' + currentPageNum + '</a></li>'
+        }
+        if (pageInfo.isLastPage)
+            pageDataStr += '<li class="disabled"><span class="current next">下一页</span></li>'
+        else
+            pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + pageInfo.nextPage + ')" class="page-link next">下一页</a></li>'
+        $('.simple-pagination ul')[0].innerHTML = pageDataStr;
+    }
+
+    function toPageNum(pageNum){
+        askForRechargeData(pageNum);
+    }
+    var eachSpan = $("#amount_list span");
+    for (let i = 1; i < eachSpan.length; i++) {
+        eachSpan[i].addEventListener("click",function(){
+            removeOtherSpanClass()
+            this.setAttribute("class","on")
+            $(".rechargeSpan > input")[0].value = this.innerText.substring(2);
+        });
+    }
+    function removeOtherSpanClass(){
+        for (let i = 1; i < eachSpan.length; i++) {
+            eachSpan[i].removeAttribute("class");
+        }
+    }
+</script>

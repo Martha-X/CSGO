@@ -8,6 +8,7 @@
         <module>common/service_util</module>
         <module>Model</module>
         <module>service</module>
+        <module>service/service_hospital</module>
     </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>

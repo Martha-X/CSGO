@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--使用th:block标签将公共css文件引入-->
+    <th:block th:replace="common :: common-css"></th:block>
+</head>
+<body>
+<div class="page">
+    <!--引入公共部分-->
+    <header th:replace="common :: #header-tabler"></header>
+    <div th:replace="common :: #header-search"></div>
+    <div class="page-wrapper">
+        <div class="page-body">
+            <div class="container-xl">
+                <div class="col-md-6">
+                    <div class="card">
+                        <div class="card-header">
+                            <h3 class="card-title">Basic form</h3>
+                        </div>
+                        <div class="card-body">
+                            <form th:action="@{/fileUpload}" method="post" enctype="multipart/form-data">
+                                <div class="form-group mb-3 ">
+                                    <label class="form-label">Email address</label>
+                                    <div>
+                                        <input type="email" name="email" class="form-control"
+                                               aria-describedby="emailHelp"
+                                               placeholder="Enter email">
+                                        <small class="form-hint">We'll never share your email with anyone else.</small>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">Password</label>
+                                    <div>
+                                        <input type="password" name="password" class="form-control"
+                                               placeholder="Password">
+                                        <small class="form-hint">
+                                            Your password must be 8-20 characters long, contain letters and numbers, and
+                                            must not
+                                            contain
+                                            spaces, special characters, or emoji.
+                                        </small>
+                                    </div>
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">上传头像（单文件）</label>
+                                    <input type="file" name="avatar" class="form-control">
+                                </div>
+                                <div class="form-group mb-3">
+                                    <label class="form-label">上传收藏图片（多文件）</label>
+                                    <input type="file" name="photos" class="form-control" multiple>
+                                </div>
+                                <div class="form-footer text-end">
+                                    <div class="d-flex">
+                                        <a href="#" class="btn btn-link">Cancel</a>
+                                        <button type="submit" class="btn btn-primary ms-auto">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Libs JS -->
+<script th:src="@{/dist/libs/nouislider/dist/nouislider.min.js}" defer></script>
+<script th:src="@{/dist/libs/litepicker/dist/litepicker.js}" defer></script>
+<script th:src="@{/dist/libs/tom-select/dist/js/tom-select.base.min.js}" defer></script>
+<!-- Tabler Core -->
+<th:block th:replace="common :: #common-scripts"></th:block>
+</body>
+</html>
