@@ -1,0 +1,306 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.electronic.boot.mapper.OrnamentPurchaseRecordMapper">
+  <resultMap id="BaseResultMap" type="com.electronic.boot.bean.OrnamentPurchaseRecord">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="icon_url" jdbcType="VARCHAR" property="iconUrl" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="price" jdbcType="DECIMAL" property="price" />
+    <result column="seller_avatar" jdbcType="VARCHAR" property="sellerAvatar" />
+    <result column="seller_nickname" jdbcType="VARCHAR" property="sellerNickname" />
+    <result column="transact_datetime" jdbcType="TIMESTAMP" property="transactDatetime" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="buyer_id" jdbcType="VARCHAR" property="buyerId" />
+    <result column="sell_id" jdbcType="VARCHAR" property="sellId" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    id, icon_url, name, price, seller_avatar, seller_nickname, transact_datetime, state, 
+    goods_id, buyer_id, sell_id
+  </sql>
+  <select id="selectByExample" parameterType="com.electronic.boot.bean.OrnamentPurchaseRecordExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ornament_purchase_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from ornament_purchase_record
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from ornament_purchase_record
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.electronic.boot.bean.OrnamentPurchaseRecordExample">
+    delete from ornament_purchase_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.electronic.boot.bean.OrnamentPurchaseRecord">
+    insert into ornament_purchase_record (id, icon_url, name, 
+      price, seller_avatar, seller_nickname, 
+      transact_datetime, state, goods_id, 
+      buyer_id, sell_id)
+    values (#{id,jdbcType=VARCHAR}, #{iconUrl,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{price,jdbcType=DECIMAL}, #{sellerAvatar,jdbcType=VARCHAR}, #{sellerNickname,jdbcType=VARCHAR}, 
+      #{transactDatetime,jdbcType=TIMESTAMP}, #{state,jdbcType=VARCHAR}, #{goodsId,jdbcType=INTEGER}, 
+      #{buyerId,jdbcType=VARCHAR}, #{sellId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.electronic.boot.bean.OrnamentPurchaseRecord">
+    insert into ornament_purchase_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="iconUrl != null">
+        icon_url,
+      </if>
+      <if test="name != null">
+        name,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="sellerAvatar != null">
+        seller_avatar,
+      </if>
+      <if test="sellerNickname != null">
+        seller_nickname,
+      </if>
+      <if test="transactDatetime != null">
+        transact_datetime,
+      </if>
+      <if test="state != null">
+        state,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="buyerId != null">
+        buyer_id,
+      </if>
+      <if test="sellId != null">
+        sell_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="iconUrl != null">
+        #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerAvatar != null">
+        #{sellerAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerNickname != null">
+        #{sellerNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="transactDatetime != null">
+        #{transactDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerId != null">
+        #{buyerId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellId != null">
+        #{sellId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.electronic.boot.bean.OrnamentPurchaseRecordExample" resultType="java.lang.Long">
+    select count(*) from ornament_purchase_record
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ornament_purchase_record
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iconUrl != null">
+        icon_url = #{record.iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="record.name != null">
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
+      <if test="record.price != null">
+        price = #{record.price,jdbcType=DECIMAL},
+      </if>
+      <if test="record.sellerAvatar != null">
+        seller_avatar = #{record.sellerAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellerNickname != null">
+        seller_nickname = #{record.sellerNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="record.transactDatetime != null">
+        transact_datetime = #{record.transactDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.state != null">
+        state = #{record.state,jdbcType=VARCHAR},
+      </if>
+      <if test="record.goodsId != null">
+        goods_id = #{record.goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.buyerId != null">
+        buyer_id = #{record.buyerId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.sellId != null">
+        sell_id = #{record.sellId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ornament_purchase_record
+    set id = #{record.id,jdbcType=VARCHAR},
+      icon_url = #{record.iconUrl,jdbcType=VARCHAR},
+      name = #{record.name,jdbcType=VARCHAR},
+      price = #{record.price,jdbcType=DECIMAL},
+      seller_avatar = #{record.sellerAvatar,jdbcType=VARCHAR},
+      seller_nickname = #{record.sellerNickname,jdbcType=VARCHAR},
+      transact_datetime = #{record.transactDatetime,jdbcType=TIMESTAMP},
+      state = #{record.state,jdbcType=VARCHAR},
+      goods_id = #{record.goodsId,jdbcType=INTEGER},
+      buyer_id = #{record.buyerId,jdbcType=VARCHAR},
+      sell_id = #{record.sellId,jdbcType=VARCHAR}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.electronic.boot.bean.OrnamentPurchaseRecord">
+    update ornament_purchase_record
+    <set>
+      <if test="iconUrl != null">
+        icon_url = #{iconUrl,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=DECIMAL},
+      </if>
+      <if test="sellerAvatar != null">
+        seller_avatar = #{sellerAvatar,jdbcType=VARCHAR},
+      </if>
+      <if test="sellerNickname != null">
+        seller_nickname = #{sellerNickname,jdbcType=VARCHAR},
+      </if>
+      <if test="transactDatetime != null">
+        transact_datetime = #{transactDatetime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="buyerId != null">
+        buyer_id = #{buyerId,jdbcType=VARCHAR},
+      </if>
+      <if test="sellId != null">
+        sell_id = #{sellId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.electronic.boot.bean.OrnamentPurchaseRecord">
+    update ornament_purchase_record
+    set icon_url = #{iconUrl,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      price = #{price,jdbcType=DECIMAL},
+      seller_avatar = #{sellerAvatar,jdbcType=VARCHAR},
+      seller_nickname = #{sellerNickname,jdbcType=VARCHAR},
+      transact_datetime = #{transactDatetime,jdbcType=TIMESTAMP},
+      state = #{state,jdbcType=VARCHAR},
+      goods_id = #{goodsId,jdbcType=INTEGER},
+      buyer_id = #{buyerId,jdbcType=VARCHAR},
+      sell_id = #{sellId,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,302 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.electronic.boot.mapper.OrnamentInventoryMapper">
+  <resultMap id="BaseResultMap" type="com.electronic.boot.bean.OrnamentInventory">
+    <id column="inventory_id" jdbcType="INTEGER" property="id" />
+    <result column="inventory_goods_id" jdbcType="INTEGER" property="goodsId" />
+    <result column="inventory_user_id" jdbcType="VARCHAR" property="userId" />
+    <result column="item_id" jdbcType="INTEGER" property="itemId" />
+  </resultMap>
+
+  <resultMap id="InventoryResultMap" type="com.electronic.boot.bean.OrnamentInventory">
+<!--    <id column="inventory_id" jdbcType="INTEGER" property="id" />-->
+<!--    <result column="inventory_goods_id" jdbcType="INTEGER" property="goodsId" />-->
+    <result column="inventory_user_id" jdbcType="VARCHAR" property="userId" />
+<!--    <result column="item_id" jdbcType="INTEGER" property="itemId" />-->
+    <collection property="inventoryList" ofType="com.electronic.boot.bean.OrnamentOnSale">
+      <!--定义集合元素的封装规则-->
+      <id column="id" jdbcType="INTEGER" property="id" />
+      <result column="name" jdbcType="VARCHAR" property="name" />
+      <result column="price" jdbcType="DECIMAL" property="price" />
+      <result column="icon_url" jdbcType="VARCHAR" property="iconUrl" />
+      <result column="category_id" jdbcType="INTEGER" property="categoryId" />
+      <result column="category_internal_name" jdbcType="VARCHAR" property="categoryInternalName" />
+      <result column="category_localized_name" jdbcType="VARCHAR" property="categoryLocalizedName" />
+      <result column="category_group_id" jdbcType="INTEGER" property="categoryGroupId" />
+      <result column="category_group_internal_name" jdbcType="VARCHAR" property="categoryGroupInternalName" />
+      <result column="category_group_localized_name" jdbcType="VARCHAR" property="categoryGroupLocalizedName" />
+      <result column="exterior_id" jdbcType="INTEGER" property="exteriorId" />
+      <result column="exterior_internal_name" jdbcType="VARCHAR" property="exteriorInternalName" />
+      <result column="exterior_localized_name" jdbcType="VARCHAR" property="exteriorLocalizedName" />
+      <result column="itemset_id" jdbcType="INTEGER" property="itemsetId" />
+      <result column="itemset_internal_name" jdbcType="VARCHAR" property="itemsetInternalName" />
+      <result column="itemset_localized_name" jdbcType="VARCHAR" property="itemsetLocalizedName" />
+      <result column="quality_id" jdbcType="INTEGER" property="qualityId" />
+      <result column="quality_internal_name" jdbcType="VARCHAR" property="qualityInternalName" />
+      <result column="quality_localized_name" jdbcType="VARCHAR" property="qualityLocalizedName" />
+      <result column="rarity_id" jdbcType="INTEGER" property="rarityId" />
+      <result column="rarity_internal_name" jdbcType="VARCHAR" property="rarityInternalName" />
+      <result column="rarity_localized_name" jdbcType="VARCHAR" property="rarityLocalizedName" />
+      <result column="type_id" jdbcType="INTEGER" property="typeId" />
+      <result column="type_internal_name" jdbcType="VARCHAR" property="typeInternalName" />
+      <result column="type_localized_name" jdbcType="VARCHAR" property="typeLocalizedName" />
+      <result column="weapon_id" jdbcType="INTEGER" property="weaponId" />
+      <result column="weapon_internal_name" jdbcType="VARCHAR" property="weaponInternalName" />
+      <result column="weapon_localized_name" jdbcType="VARCHAR" property="weaponLocalizedName" />
+      <result column="weaponcase_id" jdbcType="INTEGER" property="weaponcaseId" />
+      <result column="weaponcase_internal_name" jdbcType="VARCHAR" property="weaponcaseInternalName" />
+      <result column="weaponcase_localized_name" jdbcType="VARCHAR" property="weaponcaseLocalizedName" />
+      <result column="goods_id" jdbcType="INTEGER" property="goodsId" />
+      <result column="paintindex" jdbcType="INTEGER" property="paintindex" />
+      <result column="paintseed" jdbcType="INTEGER" property="paintseed" />
+      <result column="paintwear" jdbcType="VARCHAR" property="paintwear" />
+      <result column="background_image_url" jdbcType="VARCHAR" property="backgroundImageUrl" />
+      <result column="description" jdbcType="VARCHAR" property="description" />
+      <result column="fee" jdbcType="DECIMAL" property="fee" />
+      <result column="user_id" jdbcType="VARCHAR" property="userId" />
+      <result column="avatar" jdbcType="VARCHAR" property="avatar" />
+      <result column="nickname" jdbcType="VARCHAR" property="nickname" />
+      <result column="is_sold_out" jdbcType="INTEGER" property="isSoldOut" />
+    </collection>
+  </resultMap>
+
+  <select id="selectInventoryByUserId" resultMap="InventoryResultMap">
+    select
+    oi.user_id as inventory_user_id
+    ,
+    <include refid="Base_OrnamentOnSale_Column_List" />
+    FROM `ornament_inventory` oi
+    INNER JOIN `ornament_on_sale` oos
+    ON oi.`item_id` = oos.id
+    WHERE oi.user_id = #{userId}
+  </select>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Inventory_Column_List">
+    oi.id as inventory_id, oi.goods_id as inventory_goods_id, oi.user_id as inventory_user_id, oi.item_id
+  </sql>
+  <sql id="Base_OrnamentOnSale_Column_List">
+    oos.id,
+    oos.name,
+    oos.price,
+    oos.icon_url,
+    oos.category_id,
+    oos.category_internal_name,
+    oos.category_localized_name,
+    oos.category_group_id,
+    oos.category_group_internal_name,
+    oos.category_group_localized_name,
+    oos.exterior_id,
+    oos.exterior_internal_name,
+    oos.exterior_localized_name,
+    oos.itemset_id,
+    oos.itemset_internal_name,
+    oos.itemset_localized_name,
+    oos.quality_id,
+    oos.quality_internal_name,
+    oos.quality_localized_name,
+    oos.rarity_id,
+    oos.rarity_internal_name,
+    oos.rarity_localized_name,
+    oos.type_id,
+    oos.type_internal_name,
+    oos.type_localized_name,
+    oos.weapon_id,
+    oos.weapon_internal_name,
+    oos.weapon_localized_name,
+    oos.weaponcase_id,
+    oos.weaponcase_internal_name,
+    oos.weaponcase_localized_name,
+    oos.goods_id, paintindex,
+    oos.paintseed,
+    oos.paintwear,
+    oos.background_image_url,
+    oos.description,
+    oos.fee,
+    oos.user_id,
+    oos.avatar,
+    oos.nickname,
+    oos.is_sold_out
+  </sql>
+  <select id="selectByExample" parameterType="com.electronic.boot.bean.OrnamentInventoryExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Inventory_Column_List" />
+    from ornament_inventory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Inventory_Column_List" />
+    from ornament_inventory
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from ornament_inventory
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <delete id="deleteByExample" parameterType="com.electronic.boot.bean.OrnamentInventoryExample">
+    delete from ornament_inventory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.electronic.boot.bean.OrnamentInventory">
+    insert into ornament_inventory (id, goods_id, user_id, 
+      item_id)
+    values (#{id,jdbcType=INTEGER}, #{goodsId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR}, 
+      #{itemId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.electronic.boot.bean.OrnamentInventory">
+    insert into ornament_inventory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="goodsId != null">
+        goods_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="itemId != null">
+        item_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="goodsId != null">
+        #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        #{itemId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.electronic.boot.bean.OrnamentInventoryExample" resultType="java.lang.Long">
+    select count(*) from ornament_inventory
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map">
+    update ornament_inventory
+    <set>
+      <if test="record.id != null">
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.goodsId != null">
+        goods_id = #{record.goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="record.userId != null">
+        user_id = #{record.userId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.itemId != null">
+        item_id = #{record.itemId,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map">
+    update ornament_inventory
+    set id = #{record.id,jdbcType=INTEGER},
+      goods_id = #{record.goodsId,jdbcType=INTEGER},
+      user_id = #{record.userId,jdbcType=VARCHAR},
+      item_id = #{record.itemId,jdbcType=INTEGER}
+    <if test="_parameter != null">
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByPrimaryKeySelective" parameterType="com.electronic.boot.bean.OrnamentInventory">
+    update ornament_inventory
+    <set>
+      <if test="goodsId != null">
+        goods_id = #{goodsId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=VARCHAR},
+      </if>
+      <if test="itemId != null">
+        item_id = #{itemId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.electronic.boot.bean.OrnamentInventory">
+    update ornament_inventory
+    set goods_id = #{goodsId,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=VARCHAR},
+      item_id = #{itemId,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

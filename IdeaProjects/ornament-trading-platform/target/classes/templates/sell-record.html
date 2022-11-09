@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Empty page - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <!-- CSS files -->
+    <link rel="stylesheet" th:href="@{/dist/css/main.css}">
+    <!--使用th:block标签将公共css文件引入-->
+    <th:block th:replace="common :: common-css"></th:block>
+    <style>
+        .page-title {
+            color: #fff6e9;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!--引入公共部分-->
+    <div th:replace="common :: #tablerx"></div>
+    <div class="page-wrapper csgo">
+        <div class="container-xl">
+            <!-- Page title -->
+            <div class="page-header d-print-none">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <h2 class="page-title">
+                            Sell Records
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-body">
+            <div class="container-xl">
+                <div class="l_Layout">
+                    <div class="market-header black">
+                        <div class="cont-tab cont-tab-define">
+                            <div class="blank6"></div>
+                            <ul>
+                                <li class="to_deliver on"><a
+                                        href="@{/toSellPage}">自售管理<i
+                                        class="icon icon_top_cur"></i></a></li>
+                                <li class=""><a
+                                        href="https://buff.163.com/market/sell_order/on_sale?game=csgo&amp;mode=1">正在寄售<i
+                                        class="icon icon_top_cur"></i></a></li>
+                                <li class=""><a href="javascript:void(0)">出售记录<i
+                                        class="icon icon_top_cur"></i></a></li>
+                                <li class=""><a href="https://buff.163.com/market/sell_order/stat?game=csgo">出售统计<i
+                                        class="icon icon_top_cur"></i></a></li>
+                                <li class="to_handle_bargain "><a
+                                        href="https://buff.163.com/market/sell_order/received_bargain?game=csgo">还价管理<i
+                                        class="icon icon_top_cur"></i></a></li>
+                            </ul>
+                            <div class="l_Right brief-info"><span><a
+                                    href="https://buff.163.com/shop/U1096735006?store_game=csgo"
+                                    class="c_Blue"><i class="icon icon_shop"></i>我的店铺</a></span> <span><a
+                                    href="javascript:storeInfo().showPopup();" class="c_Blue"><i
+                                    class="icon icon_setting"></i>店铺设置</a></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="criteria">
+                            <div id="search-category" class="w-Select-Multi" init="inited"
+                                 style="width: 98px; visibility: visible;">
+                                <h3>筛选</h3> <i class="icon icon_drop"></i>
+                                <ul style="width: 98px;">
+                                    <li><h6 value="">不限</h6></li>
+                                    <li><h6 value="knife">匕首</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_knife_survival_bowie">鲍伊猎刀</p>
+                                            <p value="weapon_knife_butterfly">蝴蝶刀</p>
+                                            <p value="weapon_knife_falchion">弯刀</p>
+                                            <p value="weapon_knife_flip">折叠刀</p>
+                                            <p value="weapon_knife_gut">穿肠刀</p>
+                                            <p value="weapon_knife_tactical">猎杀者匕首</p>
+                                            <p value="weapon_knife_m9_bayonet">M9 刺刀</p>
+                                            <p value="weapon_bayonet">刺刀</p>
+                                            <p value="weapon_knife_karambit">爪子刀</p>
+                                            <p value="weapon_knife_push">暗影双匕</p>
+                                            <p value="weapon_knife_stiletto">短剑</p>
+                                            <p value="weapon_knife_ursus">熊刀</p>
+                                            <p value="weapon_knife_gypsy_jackknife">折刀</p>
+                                            <p value="weapon_knife_widowmaker">锯齿爪刀</p>
+                                            <p value="weapon_knife_css">海豹短刀</p>
+                                            <p value="weapon_knife_cord">系绳匕首</p>
+                                            <p value="weapon_knife_canis">求生匕首</p>
+                                            <p value="weapon_knife_outdoor">流浪者匕首</p>
+                                            <p value="weapon_knife_skeleton">骷髅匕首</p></div>
+                                    </li>
+                                    <li><h6 value="pistol">手枪</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_hkp2000">P2000</p>
+                                            <p value="weapon_usp_silencer">USP 消音版</p>
+                                            <p value="weapon_glock">格洛克 18 型</p>
+                                            <p value="weapon_p250">P250</p>
+                                            <p value="weapon_fiveseven">FN57</p>
+                                            <p value="weapon_cz75a">CZ75 自动手枪</p>
+                                            <p value="weapon_tec9">Tec-9</p>
+                                            <p value="weapon_revolver">R8 左轮手枪</p>
+                                            <p value="weapon_deagle">沙漠之鹰</p>
+                                            <p value="weapon_elite">双持贝瑞塔</p></div>
+                                    </li>
+                                    <li><h6 value="rifle">步枪</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_galilar">加利尔 AR</p>
+                                            <p value="weapon_scar20">SCAR-20</p>
+                                            <p value="weapon_awp">AWP</p>
+                                            <p value="weapon_ak47">AK-47</p>
+                                            <p value="weapon_famas">法玛斯</p>
+                                            <p value="weapon_m4a1">M4A4</p>
+                                            <p value="weapon_m4a1_silencer">M4A1 消音版</p>
+                                            <p value="weapon_sg556">SG 553</p>
+                                            <p value="weapon_ssg08">SSG 08</p>
+                                            <p value="weapon_aug">AUG</p>
+                                            <p value="weapon_g3sg1">G3SG1</p></div>
+                                    </li>
+                                    <li><h6 value="smg">微型冲锋枪</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_p90">P90</p>
+                                            <p value="weapon_mac10">MAC-10</p>
+                                            <p value="weapon_ump45">UMP-45</p>
+                                            <p value="weapon_mp7">MP7</p>
+                                            <p value="weapon_bizon">PP-野牛</p>
+                                            <p value="weapon_mp9">MP9</p>
+                                            <p value="weapon_mp5sd">MP5-SD</p></div>
+                                    </li>
+                                    <li><h6 value="shotgun">霰弹枪</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_sawedoff">截短霰弹枪</p>
+                                            <p value="weapon_xm1014">XM1014</p>
+                                            <p value="weapon_nova">新星</p>
+                                            <p value="weapon_mag7">MAG-7</p></div>
+                                    </li>
+                                    <li><h6 value="machinegun">机枪</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_m249">M249</p>
+                                            <p value="weapon_negev">内格夫</p></div>
+                                    </li>
+                                    <li><h6 value="hands">手套</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_bloodhound_gloves">血猎手套</p>
+                                            <p value="weapon_driver_gloves">驾驶手套</p>
+                                            <p value="weapon_hand_wraps">手部束带</p>
+                                            <p value="weapon_moto_gloves">摩托手套</p>
+                                            <p value="weapon_specialist_gloves">专业手套</p>
+                                            <p value="weapon_sport_gloves">运动手套</p>
+                                            <p value="weapon_hydra_gloves">九头蛇手套</p>
+                                            <p value="weapon_brokenfang_gloves">狂牙手套</p></div>
+                                    </li>
+                                    <li><h6 value="sticker">印花</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="sticker_tournament20">22里约</p>
+                                            <p value="crate_sticker_pack_csgo10_capsule">十周年</p>
+                                            <p value="sticker_tournament19">22安特卫普</p>
+                                            <p value="crate_sticker_pack_spring2022_capsule">作战室</p>
+                                            <p value="crate_sticker_pack_bf2042_capsule_lootlist">战地2042</p>
+                                            <p value="sticker_tournament18">21斯德哥尔摩</p>
+                                            <p value="crate_sticker_pack_riptide_surfshop_lootlist">激流冲浪店</p>
+                                            <p value="crate_sticker_pack_op_riptide_capsule_lootlist">激流大行动</p>
+                                            <p value="sticker_community2021">2021社区</p>
+                                            <p value="poorly_drawn">Poorly Drawn</p>
+                                            <p value="sticker_2020rmr">2020RMR</p>
+                                            <p value="sticker_broken_fang">狂牙大行动</p>
+                                            <p value="sticker_recoil">压枪</p>
+                                            <p value="warhammer_sticker">战锤40K</p>
+                                            <p value="alyx_sticker_capsule">半衰期:Alyx</p>
+                                            <p value="halo_capsule">光环</p>
+                                            <p value="shattered_web">裂网大行动</p>
+                                            <p value="cs20_capsule">CS20</p>
+                                            <p value="2019_StarLadder_Berlin_Major">19年柏林</p>
+                                            <p value="crate_sticker_pack_chicken_capsule_lootlist">小鸡</p>
+                                            <p value="crate_sticker_pack_feral_predators_capsule_lootlist">猛兽</p>
+                                            <p value="sticker_tournament15">19年卡托</p>
+                                            <p value="skill_groups_capsule">段位印花</p>
+                                            <p value="sticker_tournament14">18年伦敦</p>
+                                            <p value="sticker_tournament13">18年波士顿</p>
+                                            <p value="sticker_tournament12">17年克拉科夫</p>
+                                            <p value="sticker_tournament11">17年亚特兰大</p>
+                                            <p value="sticker_tournament10">16年科隆</p>
+                                            <p value="sticker_tournament9">16年哥伦布</p>
+                                            <p value="sticker_tournament8">15年DH</p>
+                                            <p value="sticker_tournament7">15年科隆</p>
+                                            <p value="sticker_tournament6">15年卡托维兹</p>
+                                            <p value="sticker_tournament5">14年DH</p>
+                                            <p value="sticker_tournament4">14年科隆</p>
+                                            <p value="sticker_tournament3">14年卡托维兹</p>
+                                            <p value="crate_sticker_pack_comm2018_01_capsule_lootlist">18年社区印花</p>
+                                            <p value="crate_sticker_pack01">1号印花</p>
+                                            <p value="crate_sticker_pack02">2号印花</p>
+                                            <p value="crate_sticker_pack_enfu_capsule_lootlist">Enfu印花</p>
+                                            <p value="crate_sticker_pack_illuminate_capsule_01_lootlist">点亮中国1号</p>
+                                            <p value="crate_sticker_pack_illuminate_capsule_02_lootlist">点亮中国2号</p>
+                                            <p value="crate_sticker_pack_community01">1号社区印花</p>
+                                            <p value="crate_sticker_pack_bestiary_capsule_lootlist">动物寓言印花</p>
+                                            <p value="crate_sticker_pack_slid3_capsule_lootlist">Slid3印花</p>
+                                            <p value="crate_sticker_pack_sugarface_capsule_lootlist">糖果脸谱印花</p>
+                                            <p value="crate_sticker_pack_pinups_capsule_lootlist">海报女郎印花</p>
+                                            <p value="crate_sticker_pack_team_roles_capsule_lootlist">团队定位印花</p>
+                                            <p value="sticker_other">其他印花</p></div>
+                                    </li>
+                                    <li><h6 value="type_customplayer">探员</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="agent_team_ct">反恐精英</p>
+                                            <p value="agent_team_t">恐怖分子</p></div>
+                                    </li>
+                                    <li><h6 value="other">其他</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="csgo_type_tool">工具</p>
+                                            <p value="csgo_type_spray">涂鸦</p>
+                                            <p value="csgo_type_collectible">收藏品</p>
+                                            <p value="csgo_type_ticket">通行证</p>
+                                            <p value="csgo_tool_gifttag">礼物</p>
+                                            <p value="csgo_type_musickit">音乐盒</p>
+                                            <p value="csgo_type_weaponcase">武器箱</p>
+                                            <p value="csgo_tool_weaponcase_keytag">钥匙</p>
+                                            <p value="csgo_tool_patch">布章</p></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="search-rarity" class="w-Select-Multi c-Search csgo-Select" name="rarity"
+                                 init="inited"
+                                 style="width: 98px; visibility: visible;"><h3>品质</h3> <i class="icon icon_drop"></i>
+                                <ul style="width: 98px;">
+                                    <li><h6 value="">不限</h6></li>
+                                    <li class="rarity_contraband"><h6 value="contraband">违禁</h6></li>
+                                    <li class="rarity_ancient_weapon"><h6 value="ancient_weapon">隐秘</h6></li>
+                                    <li class="rarity_legendary_weapon"><h6 value="legendary_weapon">保密</h6></li>
+                                    <li class="rarity_mythical_weapon"><h6 value="mythical_weapon">受限</h6></li>
+                                    <li class="rarity_rare_weapon"><h6 value="rare_weapon">军规级</h6></li>
+                                    <li class="rarity_uncommon_weapon"><h6 value="uncommon_weapon">工业级</h6></li>
+                                    <li class="rarity_common_weapon"><h6 value="common_weapon">消费级</h6></li>
+                                    <li class="rarity_ancient"><h6 value="ancient">非凡</h6></li>
+                                    <li class="rarity_mythical"><h6 value="mythical">卓越</h6></li>
+                                    <li class="rarity_legendary"><h6 value="legendary">奇异</h6></li>
+                                    <li class="rarity_rare"><h6 value="rare">高级</h6></li>
+                                    <li class="rarity_common"><h6 value="common">普通级</h6></li>
+                                    <li class="rarity_agent_quality_character"><h6>探员品质 </h6> <i
+                                            class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p class="rarity_rare_character"
+                                                                    value="rare_character">高级</p>
+                                            <p class="rarity_mythical_character" value="mythical_character">卓越</p>
+                                            <p class="rarity_legendary_character" value="legendary_character">非凡</p>
+                                            <p class="rarity_ancient_character" value="ancient_character">大师</p></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="search-quality" class="w-Select c-Search csgo-Select"
+                                 style="visibility: visible; width: 100px;"
+                                 name="quality" init="inited"><h3>类别</h3> <i class="icon icon_drop"></i>
+                                <ul style="width: 100px;">
+                                    <li style="width: 82px;">不限</li>
+                                    <li value="normal" class="quality_normal" style="width: 82px;">普通</li>
+                                    <li value="tournament" class="quality_tournament" style="width: 82px;">纪念品</li>
+                                    <li value="strange" class="quality_strange" style="width: 82px;">StatTrak™</li>
+                                    <li value="unusual" class="quality_unusual" style="width: 82px;">★</li>
+                                    <li value="unusual_strange" class="quality_unusual_strange" style="width: 82px;">★
+                                        StatTrak™
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="search-exterior" class="w-Select c-Search csgo-Select"
+                                 style="visibility: visible; width: 100px;"
+                                 name="exterior" init="inited"><h3>外观</h3> <i class="icon icon_drop"></i>
+                                <ul style="width: 100px;">
+                                    <li style="width: 82px;">不限</li>
+                                    <li value="wearcategory0" class="exterior_wearcategory0" style="width: 82px;">崭新出厂
+                                    </li>
+                                    <li value="wearcategory1" class="exterior_wearcategory1" style="width: 82px;">略有磨损
+                                    </li>
+                                    <li value="wearcategory2" class="exterior_wearcategory2" style="width: 82px;">久经沙场
+                                    </li>
+                                    <li value="wearcategory3" class="exterior_wearcategory3" style="width: 82px;">破损不堪
+                                    </li>
+                                    <li value="wearcategory4" class="exterior_wearcategory4" style="width: 82px;">战痕累累
+                                    </li>
+                                    <li value="wearcategoryna" class="exterior_wearcategoryna" style="width: 82px;">
+                                        无涂装
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="search-state" class="w-Select c-Search"
+                                 style="z-index: 1; width: 100px; visibility: visible;"
+                                 name="state" init="inited"><h3>订单状态</h3> <i class="icon icon_drop"></i>
+                                <ul style="width: 100px;">
+                                    <li style="width: 82px;">不限订单状态</li>
+                                    <li value="trading" style="width: 82px;">交易中</li>
+                                    <li value="success" style="width: 82px;">交易成功</li>
+                                    <li value="fail" style="width: 82px;">交易失败</li>
+                                </ul>
+                            </div>
+                            <div class="l_Right">
+                                <div class="w-Search" id="j_search"><span> <input class="i_Text" id="search-search"
+                                                                                  name="search"
+                                                                                  placeholder="输入物品名称" size="30"
+                                                                                  type="text"> </span> <a
+                                        href="javascript:;"><i class="icon icon_search"></i>搜索</a></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="blank20"></div>
+                    <div class="detail-tab-cont">
+                        <table class="list_tb" width="100%">
+                            <thead>
+                            <tr>
+                                <th width="20"></th>
+                                <th width="100">饰品</th>
+                                <th></th>
+                                <th class="t_Left" width="150">售价</th>
+                                <th class="t_Left">买家</th>
+                                <th class="t_Left">时间</th>
+                                <th class="t_Left" width="200">状态</th>
+                            </tr>
+                            </thead>
+                            <tbody class="list_tb_csgo">
+
+                            </tbody>
+                        </table>
+                        <div class="pager list-pager light-theme simple-pagination">
+                            <ul>
+<!--                                <li class="disabled"><span class="current prev">上一页</span></li>-->
+<!--                                <li class="active"><span class="current">1</span></li>-->
+<!--                                <li><a href="https://buff.163.com/market/buy_order/history?game=csgo#page_num=2"-->
+<!--                                       class="page-link">2</a>-->
+<!--                                </li>-->
+<!--                                <li><a href="https://buff.163.com/market/buy_order/history?game=csgo#page_num=3"-->
+<!--                                       class="page-link">3</a>-->
+<!--                                </li>-->
+<!--                                <li><a href="https://buff.163.com/market/buy_order/history?game=csgo#page_num=4"-->
+<!--                                       class="page-link">4</a>-->
+<!--                                </li>-->
+<!--                                <li><a href="https://buff.163.com/market/buy_order/history?game=csgo#page_num=5"-->
+<!--                                       class="page-link">5</a>-->
+<!--                                </li>-->
+<!--                                <li><a href="https://buff.163.com/market/buy_order/history?game=csgo#page_num=6"-->
+<!--                                       class="page-link">6</a>-->
+<!--                                </li>-->
+<!--                                <li><a href="https://buff.163.com/market/buy_order/history?game=csgo#page_num=7"-->
+<!--                                       class="page-link">7</a>-->
+<!--                                </li>-->
+<!--                                <li><a href="https://buff.163.com/market/buy_order/history?game=csgo#page_num=8"-->
+<!--                                       class="page-link">8</a>-->
+<!--                                </li>-->
+<!--                                <li><a href="https://buff.163.com/market/buy_order/history?game=csgo#page_num=9"-->
+<!--                                       class="page-link">9</a>-->
+<!--                                </li>-->
+<!--                                <li><a href="https://buff.163.com/market/buy_order/history?game=csgo#page_num=10"-->
+<!--                                       class="page-link">10</a></li>-->
+<!--                                <li><a href="https://buff.163.com/market/buy_order/history?game=csgo#page_num=2"-->
+<!--                                       class="page-link next">下一页</a>-->
+<!--                                </li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer footer-transparent d-print-none">
+                <div class="container-xl">
+                    <div class="row text-center align-items-center flex-row-reverse">
+                        <div class="col-lg-auto ms-lg-auto">
+                            <ul class="list-inline list-inline-dots mb-0">
+                                <li class="list-inline-item"><a href="./docs/index.html" class="link-secondary">Documentation</a>
+                                </li>
+                                <li class="list-inline-item"><a href="./license.html" class="link-secondary">License</a>
+                                </li>
+                                <li class="list-inline-item"><a href="https://github.com/tabler/tabler" target="_blank"
+                                                                class="link-secondary" rel="noopener">Source code</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://github.com/sponsors/codecalm" target="_blank"
+                                       class="link-secondary" rel="noopener">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             class="icon text-pink icon-filled icon-inline" width="24" height="24"
+                                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                             stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"/>
+                                        </svg>
+                                        Sponsor
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                            <ul class="list-inline list-inline-dots mb-0">
+                                <li class="list-inline-item">
+                                    Copyright &copy; 2022
+                                    <a href="." class="link-secondary">Tabler</a>.
+                                    All rights reserved.
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="./changelog.html" class="link-secondary" rel="noopener">
+                                        v1.0.0-beta10
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+<!-- Libs JS -->
+<!-- Tabler Core -->
+<th:block th:replace="common :: #common-scripts"></th:block>
+</body>
+</html>
+<script th:src="@{jquery/jquery-3.6.0.min.js}"></script>
+<script>
+    var userId = undefined;
+    window.onload = function () {
+        userId = $("#user_detail")[0].getAttribute("data-userid");
+        askForPurchaseRecordData(userId, 1, 10);
+    }
+
+    function askForPurchaseRecordData(userId, pageNum, pageSize) {
+        $.ajax({
+            url: "/api/sell/record",
+            type: "GET",
+            // data表示发送的数据
+            data: {
+                userId: userId,
+                pageNum: pageNum,
+                pageSize: pageSize
+            },
+            // 定义发送请求的数据格式为JSON字符串
+            contentType: "application/json;charset=UTF-8",
+            //定义回调响应的数据格式为JSON字符串，该属性可以省略
+            dataType: "json",
+            //成功响应的结果
+            success: function (data) {
+                console.log(data)
+                renderData(data);
+            }
+        });
+    }
+
+    function renderData(data) {
+        var dataList = data.data.list;
+        var purchaseDataStr = ""
+        for (let i = 0; i < dataList.length; i++) {
+            purchaseDataStr += `<tr id="${dataList[i].id}">
+                                <td></td>
+                                <td>
+                                    <div class="pic-cont item-detail-img">
+                                        <a href="http://localhost:8080/goods/${dataList[i].goodsId}">
+                                            <img src="${dataList[i].iconUrl}" width="72" height="48">
+                                        </a>
+                                    </div>
+                                </td>
+                                <td class="t_Left">
+                                    <div class="name-cont">
+                                        <a href="http://localhost:8080/goods/${dataList[i].goodsId}">
+                                            <h3><span class="textOne">${dataList[i].name}</span></h3>
+                                        </a>
+                                        <p></p>
+                                    </div>
+                                </td>
+                                <td class="t_Left"><strong class="f_Strong">¥ ${dataList[i].sellPrice}</strong>
+                                    <p class="hide-cny c_Gray f_12px">(¥ ${dataList[i].sellPrice})</p>
+                                </td>
+                                <td class="t_Left">
+                                    <a href="javascript:void(0)" target="_blank">
+                                        ${dataList[i].buyerNickname}
+                                    </a>
+                                </td>
+                                <td class="c_Gray t_Left">${dataList[i].transactTime}</td>
+                                <td class="t_Left deliver-expire td_status"><p class="c_Green"><i class="icon icon_status_success"></i>${dataList[i].state}</p></td>
+                            </tr>`
+        }
+        $(".list_tb_csgo")[0].innerHTML = purchaseDataStr;
+        var pageInfo = data.data;
+        var navigatepageNums = pageInfo.navigatepageNums;
+        var pageDataStr = ""
+        if (navigatepageNums.length == 1) {
+            $(".pager")[0].style = "display:none";
+        }else{
+            if (pageInfo.isFirstPage)
+                pageDataStr += '<li class="disabled"><span class="current prev">上一页</span></li>'
+            else
+                pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + pageInfo.prePage + ')" class="page-link prev">上一页</a></li>'
+
+            for (let i = 0; i < navigatepageNums.length; i++) {
+                var index = navigatepageNums[i];
+                if (pageInfo.pageNum == navigatepageNums[i]) {
+                    currentPage = index;
+                    pageDataStr += `<li class="active"><span class="current">${index}</span></li>`;
+                } else
+                    pageDataStr += `<li><a href="javascript:void(0)" onclick="toPageNum(${index})" className="page-link">${index}</a></li>`
+            }
+            if (pageInfo.isLastPage)
+                pageDataStr += '<li class="disabled"><span class="current next">下一页</span></li>'
+            else
+                pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + pageInfo.nextPage + ')" class="page-link next">下一页</a></li>'
+            $('.simple-pagination ul')[0].innerHTML = pageDataStr;
+        }
+    }
+
+    function toPageNum(pageNum){
+        askForPurchaseRecordData(userId,pageNum,10)
+    }
+</script>

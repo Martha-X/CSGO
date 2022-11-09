@@ -1,0 +1,536 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
+    <title>Empty page - Tabler - Premium and Open Source dashboard template with responsive and high quality UI.</title>
+    <!-- CSS files -->
+    <link rel="stylesheet" th:href="@{dist/css/main.css}">
+    <!--使用th:block标签将公共css文件引入-->
+    <th:block th:replace="common :: common-css"></th:block>
+    <style>
+        body > div > div.page-wrapper > div.page-body > div > div > div.detail-tab-cont * {
+            box-sizing: content-box;
+        }
+
+        .page-title {
+            color: #fff6e9;
+        }
+    </style>
+</head>
+<body>
+<div class="page">
+    <!--引入公共部分-->
+    <div th:replace="common :: #tablerx"></div>
+    <div class="page-wrapper csgo">
+        <div class="container-xl">
+            <!-- Page title -->
+            <div class="page-header d-print-none">
+                <div class="row g-2 align-items-center">
+                    <div class="col">
+                        <h2 class="page-title">
+                            Sell
+                        </h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="page-body">
+            <div class="container-xl">
+                <div class="l_Layout">
+                    <div class="market-header black">
+                        <div class="cont-tab cont-tab-define">
+                            <div class="blank6"></div>
+                            <ul>
+                                <li class="to_deliver on"><a
+                                        href="javascript:void(0)">自售管理<i
+                                        class="icon icon_top_cur"></i></a></li>
+                                <li class=""><a
+                                        href="https://buff.163.com/market/sell_order/on_sale?game=csgo&amp;mode=1">正在寄售<i
+                                        class="icon icon_top_cur"></i></a></li>
+                                <li class=""><a th:href="@{/toSellRecordPage}">出售记录<i
+                                        class="icon icon_top_cur"></i></a></li>
+                                <li class=""><a href="https://buff.163.com/market/sell_order/stat?game=csgo">出售统计<i
+                                        class="icon icon_top_cur"></i></a></li>
+                                <li class="to_handle_bargain "><a
+                                        href="https://buff.163.com/market/sell_order/received_bargain?game=csgo">还价管理<i
+                                        class="icon icon_top_cur"></i></a></li>
+                            </ul>
+                            <div class="l_Right brief-info"><span><a
+                                    href="https://buff.163.com/shop/U1096735006?store_game=csgo"
+                                    class="c_Blue"><i class="icon icon_shop"></i>我的店铺</a></span> <span><a
+                                    href="javascript:storeInfo().showPopup();" class="c_Blue"><i
+                                    class="icon icon_setting"></i>店铺设置</a></span>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="criteria">
+                            <div id="search-category" class="w-Select-Multi" init="inited"
+                                 style="width: 98px; visibility: visible;">
+                                <h3>筛选</h3> <i class="icon icon_drop"></i>
+                                <ul style="width: 98px;">
+                                    <li><h6 value="">不限</h6></li>
+                                    <li><h6 value="knife">匕首</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_knife_survival_bowie">鲍伊猎刀</p>
+                                            <p value="weapon_knife_butterfly">蝴蝶刀</p>
+                                            <p value="weapon_knife_falchion">弯刀</p>
+                                            <p value="weapon_knife_flip">折叠刀</p>
+                                            <p value="weapon_knife_gut">穿肠刀</p>
+                                            <p value="weapon_knife_tactical">猎杀者匕首</p>
+                                            <p value="weapon_knife_m9_bayonet">M9 刺刀</p>
+                                            <p value="weapon_bayonet">刺刀</p>
+                                            <p value="weapon_knife_karambit">爪子刀</p>
+                                            <p value="weapon_knife_push">暗影双匕</p>
+                                            <p value="weapon_knife_stiletto">短剑</p>
+                                            <p value="weapon_knife_ursus">熊刀</p>
+                                            <p value="weapon_knife_gypsy_jackknife">折刀</p>
+                                            <p value="weapon_knife_widowmaker">锯齿爪刀</p>
+                                            <p value="weapon_knife_css">海豹短刀</p>
+                                            <p value="weapon_knife_cord">系绳匕首</p>
+                                            <p value="weapon_knife_canis">求生匕首</p>
+                                            <p value="weapon_knife_outdoor">流浪者匕首</p>
+                                            <p value="weapon_knife_skeleton">骷髅匕首</p></div>
+                                    </li>
+                                    <li><h6 value="pistol">手枪</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_hkp2000">P2000</p>
+                                            <p value="weapon_usp_silencer">USP 消音版</p>
+                                            <p value="weapon_glock">格洛克 18 型</p>
+                                            <p value="weapon_p250">P250</p>
+                                            <p value="weapon_fiveseven">FN57</p>
+                                            <p value="weapon_cz75a">CZ75 自动手枪</p>
+                                            <p value="weapon_tec9">Tec-9</p>
+                                            <p value="weapon_revolver">R8 左轮手枪</p>
+                                            <p value="weapon_deagle">沙漠之鹰</p>
+                                            <p value="weapon_elite">双持贝瑞塔</p></div>
+                                    </li>
+                                    <li><h6 value="rifle">步枪</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_galilar">加利尔 AR</p>
+                                            <p value="weapon_scar20">SCAR-20</p>
+                                            <p value="weapon_awp">AWP</p>
+                                            <p value="weapon_ak47">AK-47</p>
+                                            <p value="weapon_famas">法玛斯</p>
+                                            <p value="weapon_m4a1">M4A4</p>
+                                            <p value="weapon_m4a1_silencer">M4A1 消音版</p>
+                                            <p value="weapon_sg556">SG 553</p>
+                                            <p value="weapon_ssg08">SSG 08</p>
+                                            <p value="weapon_aug">AUG</p>
+                                            <p value="weapon_g3sg1">G3SG1</p></div>
+                                    </li>
+                                    <li><h6 value="smg">微型冲锋枪</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_p90">P90</p>
+                                            <p value="weapon_mac10">MAC-10</p>
+                                            <p value="weapon_ump45">UMP-45</p>
+                                            <p value="weapon_mp7">MP7</p>
+                                            <p value="weapon_bizon">PP-野牛</p>
+                                            <p value="weapon_mp9">MP9</p>
+                                            <p value="weapon_mp5sd">MP5-SD</p></div>
+                                    </li>
+                                    <li><h6 value="shotgun">霰弹枪</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_sawedoff">截短霰弹枪</p>
+                                            <p value="weapon_xm1014">XM1014</p>
+                                            <p value="weapon_nova">新星</p>
+                                            <p value="weapon_mag7">MAG-7</p></div>
+                                    </li>
+                                    <li><h6 value="machinegun">机枪</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_m249">M249</p>
+                                            <p value="weapon_negev">内格夫</p></div>
+                                    </li>
+                                    <li><h6 value="hands">手套</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="weapon_bloodhound_gloves">血猎手套</p>
+                                            <p value="weapon_driver_gloves">驾驶手套</p>
+                                            <p value="weapon_hand_wraps">手部束带</p>
+                                            <p value="weapon_moto_gloves">摩托手套</p>
+                                            <p value="weapon_specialist_gloves">专业手套</p>
+                                            <p value="weapon_sport_gloves">运动手套</p>
+                                            <p value="weapon_hydra_gloves">九头蛇手套</p>
+                                            <p value="weapon_brokenfang_gloves">狂牙手套</p></div>
+                                    </li>
+                                    <li><h6 value="sticker">印花</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="sticker_tournament20">22里约</p>
+                                            <p value="crate_sticker_pack_csgo10_capsule">十周年</p>
+                                            <p value="sticker_tournament19">22安特卫普</p>
+                                            <p value="crate_sticker_pack_spring2022_capsule">作战室</p>
+                                            <p value="crate_sticker_pack_bf2042_capsule_lootlist">战地2042</p>
+                                            <p value="sticker_tournament18">21斯德哥尔摩</p>
+                                            <p value="crate_sticker_pack_riptide_surfshop_lootlist">激流冲浪店</p>
+                                            <p value="crate_sticker_pack_op_riptide_capsule_lootlist">激流大行动</p>
+                                            <p value="sticker_community2021">2021社区</p>
+                                            <p value="poorly_drawn">Poorly Drawn</p>
+                                            <p value="sticker_2020rmr">2020RMR</p>
+                                            <p value="sticker_broken_fang">狂牙大行动</p>
+                                            <p value="sticker_recoil">压枪</p>
+                                            <p value="warhammer_sticker">战锤40K</p>
+                                            <p value="alyx_sticker_capsule">半衰期:Alyx</p>
+                                            <p value="halo_capsule">光环</p>
+                                            <p value="shattered_web">裂网大行动</p>
+                                            <p value="cs20_capsule">CS20</p>
+                                            <p value="2019_StarLadder_Berlin_Major">19年柏林</p>
+                                            <p value="crate_sticker_pack_chicken_capsule_lootlist">小鸡</p>
+                                            <p value="crate_sticker_pack_feral_predators_capsule_lootlist">猛兽</p>
+                                            <p value="sticker_tournament15">19年卡托</p>
+                                            <p value="skill_groups_capsule">段位印花</p>
+                                            <p value="sticker_tournament14">18年伦敦</p>
+                                            <p value="sticker_tournament13">18年波士顿</p>
+                                            <p value="sticker_tournament12">17年克拉科夫</p>
+                                            <p value="sticker_tournament11">17年亚特兰大</p>
+                                            <p value="sticker_tournament10">16年科隆</p>
+                                            <p value="sticker_tournament9">16年哥伦布</p>
+                                            <p value="sticker_tournament8">15年DH</p>
+                                            <p value="sticker_tournament7">15年科隆</p>
+                                            <p value="sticker_tournament6">15年卡托维兹</p>
+                                            <p value="sticker_tournament5">14年DH</p>
+                                            <p value="sticker_tournament4">14年科隆</p>
+                                            <p value="sticker_tournament3">14年卡托维兹</p>
+                                            <p value="crate_sticker_pack_comm2018_01_capsule_lootlist">18年社区印花</p>
+                                            <p value="crate_sticker_pack01">1号印花</p>
+                                            <p value="crate_sticker_pack02">2号印花</p>
+                                            <p value="crate_sticker_pack_enfu_capsule_lootlist">Enfu印花</p>
+                                            <p value="crate_sticker_pack_illuminate_capsule_01_lootlist">点亮中国1号</p>
+                                            <p value="crate_sticker_pack_illuminate_capsule_02_lootlist">点亮中国2号</p>
+                                            <p value="crate_sticker_pack_community01">1号社区印花</p>
+                                            <p value="crate_sticker_pack_bestiary_capsule_lootlist">动物寓言印花</p>
+                                            <p value="crate_sticker_pack_slid3_capsule_lootlist">Slid3印花</p>
+                                            <p value="crate_sticker_pack_sugarface_capsule_lootlist">糖果脸谱印花</p>
+                                            <p value="crate_sticker_pack_pinups_capsule_lootlist">海报女郎印花</p>
+                                            <p value="crate_sticker_pack_team_roles_capsule_lootlist">团队定位印花</p>
+                                            <p value="sticker_other">其他印花</p></div>
+                                    </li>
+                                    <li><h6 value="type_customplayer">探员</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="agent_team_ct">反恐精英</p>
+                                            <p value="agent_team_t">恐怖分子</p></div>
+                                    </li>
+                                    <li><h6 value="other">其他</h6> <i class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p value="csgo_type_tool">工具</p>
+                                            <p value="csgo_type_spray">涂鸦</p>
+                                            <p value="csgo_type_collectible">收藏品</p>
+                                            <p value="csgo_type_ticket">通行证</p>
+                                            <p value="csgo_tool_gifttag">礼物</p>
+                                            <p value="csgo_type_musickit">音乐盒</p>
+                                            <p value="csgo_type_weaponcase">武器箱</p>
+                                            <p value="csgo_tool_weaponcase_keytag">钥匙</p>
+                                            <p value="csgo_tool_patch">布章</p></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="search-rarity" class="w-Select-Multi c-Search csgo-Select" name="rarity"
+                                 init="inited"
+                                 style="width: 98px; visibility: visible;"><h3>品质</h3> <i class="icon icon_drop"></i>
+                                <ul style="width: 98px;">
+                                    <li><h6 value="">不限</h6></li>
+                                    <li class="rarity_contraband"><h6 value="contraband">违禁</h6></li>
+                                    <li class="rarity_ancient_weapon"><h6 value="ancient_weapon">隐秘</h6></li>
+                                    <li class="rarity_legendary_weapon"><h6 value="legendary_weapon">保密</h6></li>
+                                    <li class="rarity_mythical_weapon"><h6 value="mythical_weapon">受限</h6></li>
+                                    <li class="rarity_rare_weapon"><h6 value="rare_weapon">军规级</h6></li>
+                                    <li class="rarity_uncommon_weapon"><h6 value="uncommon_weapon">工业级</h6></li>
+                                    <li class="rarity_common_weapon"><h6 value="common_weapon">消费级</h6></li>
+                                    <li class="rarity_ancient"><h6 value="ancient">非凡</h6></li>
+                                    <li class="rarity_mythical"><h6 value="mythical">卓越</h6></li>
+                                    <li class="rarity_legendary"><h6 value="legendary">奇异</h6></li>
+                                    <li class="rarity_rare"><h6 value="rare">高级</h6></li>
+                                    <li class="rarity_common"><h6 value="common">普通级</h6></li>
+                                    <li class="rarity_agent_quality_character"><h6>探员品质 </h6> <i
+                                            class="icon icon_drop"></i>
+                                        <div style="left: 99px;"><p class="rarity_rare_character"
+                                                                    value="rare_character">高级</p>
+                                            <p class="rarity_mythical_character" value="mythical_character">卓越</p>
+                                            <p class="rarity_legendary_character" value="legendary_character">非凡</p>
+                                            <p class="rarity_ancient_character" value="ancient_character">大师</p></div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="search-quality" class="w-Select c-Search csgo-Select"
+                                 style="visibility: visible; width: 100px;"
+                                 name="quality" init="inited"><h3>类别</h3> <i class="icon icon_drop"></i>
+                                <ul style="width: 100px;">
+                                    <li style="width: 82px;">不限</li>
+                                    <li value="normal" class="quality_normal" style="width: 82px;">普通</li>
+                                    <li value="tournament" class="quality_tournament" style="width: 82px;">纪念品</li>
+                                    <li value="strange" class="quality_strange" style="width: 82px;">StatTrak™</li>
+                                    <li value="unusual" class="quality_unusual" style="width: 82px;">★</li>
+                                    <li value="unusual_strange" class="quality_unusual_strange" style="width: 82px;">★
+                                        StatTrak™
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="search-exterior" class="w-Select c-Search csgo-Select"
+                                 style="visibility: visible; width: 100px;"
+                                 name="exterior" init="inited"><h3>外观</h3> <i class="icon icon_drop"></i>
+                                <ul style="width: 100px;">
+                                    <li style="width: 82px;">不限</li>
+                                    <li value="wearcategory0" class="exterior_wearcategory0" style="width: 82px;">崭新出厂
+                                    </li>
+                                    <li value="wearcategory1" class="exterior_wearcategory1" style="width: 82px;">略有磨损
+                                    </li>
+                                    <li value="wearcategory2" class="exterior_wearcategory2" style="width: 82px;">久经沙场
+                                    </li>
+                                    <li value="wearcategory3" class="exterior_wearcategory3" style="width: 82px;">破损不堪
+                                    </li>
+                                    <li value="wearcategory4" class="exterior_wearcategory4" style="width: 82px;">战痕累累
+                                    </li>
+                                    <li value="wearcategoryna" class="exterior_wearcategoryna" style="width: 82px;">
+                                        无涂装
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="l_Right">
+                                <div class="w-Search" id="j_search"><span> <input class="i_Text" id="search-search"
+                                                                                  name="search"
+                                                                                  placeholder="输入物品名称" size="30"
+                                                                                  type="text"> </span> <a
+                                        href="javascript:;"><i class="icon icon_search"></i>搜索</a></div>
+                            </div>
+                            <div class="clear"></div>
+                        </div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="clear"></div>
+                    <div class="blank20"></div>
+                    <div class="block-header black">
+                        <ul class="tab"><a href="https://buff.163.com/market/sell_order/on_sale?mode=2,5&amp;game=csgo">
+                            <li class="on">自售中</li>
+                        </a> <a href="https://buff.163.com/market/sell_order/to_deliver?game=csgo">
+                            <li>等待发货(<span id="current-game-to-deliver">0</span>)</li>
+                        </a></ul>
+                        <div class="l_Right">
+                            <div class="w-Checkbox" name="preview_screenshots" value="" id="preview_screenshots"><span
+                                    value="inspect_trn_url" class="on"><i class="icon icon_checkbox"></i>预览检视图</span>
+                            </div>
+                            <div class="w-Checkbox" name="select-all" value=""><span value="selectall"><i
+                                    class="icon icon_checkbox"></i>全选 (0/3)</span></div>
+                            <a href="javascript:;" class="i_Btn i_Btn_sub" id="change-price">改价</a> <a
+                                href="javascript:;" class="i_Btn"
+                                id="cancel-order"
+                                data-mode="manual">下架</a></div>
+                        <div class="clear"></div>
+                    </div>
+                    <div class="detail-tab-cont">
+                        <div class="market-card">
+                            <div class="list_card list_card_small2" id="j_list_card">
+                                <div class="l_Left w-OrderGroup">
+                                    <div class="w-Order w-Order_des"><span>默认</span></div>
+                                    <div class="w-Order" name="price"><span>价格<i class="icon icon_order"></i></span>
+                                    </div>
+                                    <div class="w-Order" name="paintwear"><span>磨损<i class="icon icon_order"></i></span>
+                                    </div>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="blank20"></div>
+                                <ul>
+                                    <li id="sell_order_221108T2051488198" class="salable my_selling "
+                                        data-goodsid="35355"
+                                        data-orderid="221108T2051488198" data-price="100" data-appid="730"
+                                        data-goods-name="M4A4 | 龙王 (略有磨损)"
+                                        data-icon-url="https://g.fp.ps.netease.com/market/file/5aa0b431a750142b26ec366920VAmHTM"
+                                        data-goods-tags="{&quot;category&quot;: {&quot;category&quot;: &quot;category&quot;, &quot;id&quot;: 628, &quot;internal_name&quot;: &quot;weapon_m4a1&quot;, &quot;localized_name&quot;: &quot;M4A4&quot;}, &quot;category_group&quot;: {&quot;category&quot;: &quot;category_group&quot;, &quot;id&quot;: 622, &quot;internal_name&quot;: &quot;rifle&quot;, &quot;localized_name&quot;: &quot;\u6b65\u67aa&quot;}, &quot;custom&quot;: {&quot;category&quot;: &quot;custom&quot;, &quot;id&quot;: 8790, &quot;internal_name&quot;: &quot;red&quot;, &quot;localized_name&quot;: &quot;red&quot;}, &quot;exterior&quot;: {&quot;category&quot;: &quot;exterior&quot;, &quot;id&quot;: 511, &quot;internal_name&quot;: &quot;wearcategory1&quot;, &quot;localized_name&quot;: &quot;\u7565\u6709\u78e8\u635f&quot;}, &quot;itemset&quot;: {&quot;category&quot;: &quot;itemset&quot;, &quot;id&quot;: 405, &quot;internal_name&quot;: &quot;set_community_6&quot;, &quot;localized_name&quot;: &quot;\u5e7b\u5f69\u6536\u85cf\u54c1&quot;}, &quot;quality&quot;: {&quot;category&quot;: &quot;quality&quot;, &quot;id&quot;: 516, &quot;internal_name&quot;: &quot;normal&quot;, &quot;localized_name&quot;: &quot;\u666e\u901a&quot;}, &quot;rarity&quot;: {&quot;category&quot;: &quot;rarity&quot;, &quot;id&quot;: 591, &quot;internal_name&quot;: &quot;legendary_weapon&quot;, &quot;localized_name&quot;: &quot;\u4fdd\u5bc6&quot;}, &quot;type&quot;: {&quot;category&quot;: &quot;type&quot;, &quot;id&quot;: 570, &quot;internal_name&quot;: &quot;csgo_type_rifle&quot;, &quot;localized_name&quot;: &quot;\u6b65\u67aa&quot;}, &quot;weapon&quot;: {&quot;category&quot;: &quot;weapon&quot;, &quot;id&quot;: 534, &quot;internal_name&quot;: &quot;weapon_m4a1&quot;, &quot;localized_name&quot;: &quot;M4A4&quot;}, &quot;weaponcase&quot;: {&quot;category&quot;: &quot;weaponcase&quot;, &quot;id&quot;: 11286, &quot;internal_name&quot;: &quot;Chroma Case&quot;, &quot;localized_name&quot;: &quot;chroma case&quot;}}"
+                                        data-assetid="27368135870" data-coupon-infos="null"><a href="javascript:;"
+                                                                                               class="img img_a item-detail-img"
+                                                                                               data-classid="4710700194"
+                                                                                               data-instanceid="480085569"
+                                                                                               data-assetid="27368135870"
+                                                                                               data-contextid="2"
+                                                                                               data-appid="730"
+                                                                                               data-origin="my-selling"
+                                                                                               style="background-image: url(&quot;https://buff.163.com/static/images/item_bg.png&quot;); background-position:center;"
+                                                                                               data-src_url_background="https://buff.163.com/static/images/item_bg.png"
+                                                                                               data-inspect_trn_url_background="https://spect.fp.ps.netease.com/file/613abf6309463c49b9c8aa93Mt9e2tVQ03">
+                                        <img src="./正在出售_网易BUFF饰品交易平台_files/5aa0b431a750142b26ec366920VAmHTM"
+                                             data-src_url="https://g.fp.ps.netease.com/market/file/5aa0b431a750142b26ec366920VAmHTM?fop=imageView/2/w/245/h/230"
+                                             style="object-fit:contain; "> </a>
+                                        <div class="wear">
+                                            <div class="wear-value">磨损: 0.08854027092456818</div>
+                                            <div class="wear-pointer">
+                                                <div class="wear-pointer-icon" style="left: 8.85402709246%"></div>
+                                            </div>
+                                            <div class="progress">
+                                                <div class="progress-bar progress-bar-fn" style="width: 7%;"
+                                                     title="崭新出厂"></div>
+                                                <div class="progress-bar progress-bar-success" style="width: 8%;"
+                                                     title="略有磨损"></div>
+                                                <div class="progress-bar progress-bar-warning" style="width: 23%;"
+                                                     title="久经沙场"></div>
+                                                <div class="progress-bar progress-bar-danger" style="width: 7%;"
+                                                     title="破损不堪"></div>
+                                                <div class="progress-bar progress-bar-bs" style="width: 55%;"
+                                                     title="战痕累累"></div>
+                                            </div>
+                                        </div>
+                                        <h3><a href="https://buff.163.com/goods/35355"
+                                               onclick="event.stopPropagation();"
+                                               target="_blank" title="M4A4 | 龙王 (略有磨损)">M4A4 | 龙王 (略有磨损)</a></h3>
+                                        <p><strong class="f_Strong sell_order_price">¥ 100</strong></p> <i
+                                                class="icon icon_check"></i>
+                                        <div class="tagBox">
+                                            <span class="tag tag_csgo_wearcategory1">略有磨损</span> <span
+                                                class="tag tag_gray2 j_tips_handler" data-direction="bottom"
+                                                data-title="图案模板(paint seed)" data-content="">275</span></div>
+                                    </li>
+                                    <li id="sell_order_220817T1963513194" class="salable my_selling nowear"
+                                        data-goodsid="36900"
+                                        data-orderid="220817T1963513194" data-price="0.52" data-appid="730"
+                                        data-goods-name="封装的涂鸦 | 眼球 (群青)"
+                                        data-icon-url="https://g.fp.ps.netease.com/market/file/5a7acd7efb758a93e63106750sGtFxFW"
+                                        data-goods-tags="{&quot;category&quot;: {&quot;category&quot;: &quot;category&quot;, &quot;id&quot;: 659, &quot;internal_name&quot;: &quot;csgo_type_spray&quot;, &quot;localized_name&quot;: &quot;\u6d82\u9e26&quot;}, &quot;category_group&quot;: {&quot;category&quot;: &quot;category_group&quot;, &quot;id&quot;: 657, &quot;internal_name&quot;: &quot;other&quot;, &quot;localized_name&quot;: &quot;\u5176\u4ed6&quot;}, &quot;quality&quot;: {&quot;category&quot;: &quot;quality&quot;, &quot;id&quot;: 516, &quot;internal_name&quot;: &quot;normal&quot;, &quot;localized_name&quot;: &quot;\u666e\u901a&quot;}, &quot;rarity&quot;: {&quot;category&quot;: &quot;rarity&quot;, &quot;id&quot;: 594, &quot;internal_name&quot;: &quot;common&quot;, &quot;localized_name&quot;: &quot;\u666e\u901a\u7ea7&quot;}, &quot;spraycolorcategory&quot;: {&quot;category&quot;: &quot;spraycolorcategory&quot;, &quot;id&quot;: 501, &quot;internal_name&quot;: &quot;tint11&quot;, &quot;localized_name&quot;: &quot;\u7fa4\u9752&quot;}, &quot;type&quot;: {&quot;category&quot;: &quot;type&quot;, &quot;id&quot;: 584, &quot;internal_name&quot;: &quot;csgo_type_spray&quot;, &quot;localized_name&quot;: &quot;\u6d82\u9e26&quot;}}"
+                                        data-assetid="26844832223" data-coupon-infos="null"><a href="javascript:;"
+                                                                                               class="img img_a item-detail-img"
+                                                                                               data-classid="1989274949"
+                                                                                               data-instanceid="302028390"
+                                                                                               data-assetid="26844832223"
+                                                                                               data-contextid="2"
+                                                                                               data-appid="730"
+                                                                                               data-origin="my-selling"
+                                                                                               style="background-image: url(&quot;https://buff.163.com/static/images/item_bg.png&quot;); background-position:center;"
+                                                                                               data-src_url_background="https://buff.163.com/static/images/item_bg.png"
+                                                                                               data-inspect_trn_url_background="https://spect.fp.ps.netease.com/file/613abf6309463c49b9c8aa93Mt9e2tVQ03">
+                                        <img src="./正在出售_网易BUFF饰品交易平台_files/5a7acd7efb758a93e63106750sGtFxFW"
+                                             data-src_url="https://g.fp.ps.netease.com/market/file/5a7acd7efb758a93e63106750sGtFxFW?fop=imageView/2/w/245/h/230"
+                                             style="object-fit:contain; "> </a>
+                                        <h3><a href="https://buff.163.com/goods/36900"
+                                               onclick="event.stopPropagation();"
+                                               target="_blank" title="封装的涂鸦 | 眼球 (群青)">封装的涂鸦 | 眼球 (群青)</a></h3>
+                                        <p><strong class="f_Strong sell_order_price">¥ 0
+                                            <small>.52</small>
+                                        </strong></p>
+                                        <i class="icon icon_check"></i>
+                                        <div class="tagBox">
+                                            <div class="g_Right"><i class="icon icon_fav2 j_tips_handler "
+                                                                    data-orderid="220817T1963513194"
+                                                                    data-direction="bottom"
+                                                                    data-title="设为推荐项" data-content=""></i></div>
+                                            <span class="tag tag_black rarity_common">普通级</span></div>
+                                    </li>
+                                    <li id="sell_order_220813T1929121398" class="salable my_selling nowear"
+                                        data-goodsid="37416"
+                                        data-orderid="220813T1929121398" data-price="0.52" data-appid="730"
+                                        data-goods-name="封装的涂鸦 | 烤焦 (藕色)"
+                                        data-icon-url="https://g.fp.ps.netease.com/market/file/5a7ac89f02c9a180995ac407GlbMYrkZ"
+                                        data-goods-tags="{&quot;category&quot;: {&quot;category&quot;: &quot;category&quot;, &quot;id&quot;: 659, &quot;internal_name&quot;: &quot;csgo_type_spray&quot;, &quot;localized_name&quot;: &quot;\u6d82\u9e26&quot;}, &quot;category_group&quot;: {&quot;category&quot;: &quot;category_group&quot;, &quot;id&quot;: 657, &quot;internal_name&quot;: &quot;other&quot;, &quot;localized_name&quot;: &quot;\u5176\u4ed6&quot;}, &quot;quality&quot;: {&quot;category&quot;: &quot;quality&quot;, &quot;id&quot;: 516, &quot;internal_name&quot;: &quot;normal&quot;, &quot;localized_name&quot;: &quot;\u666e\u901a&quot;}, &quot;rarity&quot;: {&quot;category&quot;: &quot;rarity&quot;, &quot;id&quot;: 594, &quot;internal_name&quot;: &quot;common&quot;, &quot;localized_name&quot;: &quot;\u666e\u901a\u7ea7&quot;}, &quot;spraycolorcategory&quot;: {&quot;category&quot;: &quot;spraycolorcategory&quot;, &quot;id&quot;: 508, &quot;internal_name&quot;: &quot;tint18&quot;, &quot;localized_name&quot;: &quot;\u85d5\u8272&quot;}, &quot;type&quot;: {&quot;category&quot;: &quot;type&quot;, &quot;id&quot;: 584, &quot;internal_name&quot;: &quot;csgo_type_spray&quot;, &quot;localized_name&quot;: &quot;\u6d82\u9e26&quot;}}"
+                                        data-assetid="26802710611" data-coupon-infos="null"><a href="javascript:;"
+                                                                                               class="img img_a item-detail-img"
+                                                                                               data-classid="1989288046"
+                                                                                               data-instanceid="302028390"
+                                                                                               data-assetid="26802710611"
+                                                                                               data-contextid="2"
+                                                                                               data-appid="730"
+                                                                                               data-origin="my-selling"
+                                                                                               style="background-image: url(&quot;https://buff.163.com/static/images/item_bg.png&quot;); background-position:center;"
+                                                                                               data-src_url_background="https://buff.163.com/static/images/item_bg.png"
+                                                                                               data-inspect_trn_url_background="https://spect.fp.ps.netease.com/file/613abf6309463c49b9c8aa93Mt9e2tVQ03">
+                                        <img src="./正在出售_网易BUFF饰品交易平台_files/5a7ac89f02c9a180995ac407GlbMYrkZ"
+                                             data-src_url="https://g.fp.ps.netease.com/market/file/5a7ac89f02c9a180995ac407GlbMYrkZ?fop=imageView/2/w/245/h/230"
+                                             style="object-fit:contain; "> </a>
+                                        <h3><a href="https://buff.163.com/goods/37416"
+                                               onclick="event.stopPropagation();"
+                                               target="_blank" title="封装的涂鸦 | 烤焦 (藕色)">封装的涂鸦 | 烤焦 (藕色)</a></h3>
+                                        <p><strong class="f_Strong sell_order_price">¥ 0
+                                            <small>.52</small>
+                                        </strong></p>
+                                        <i class="icon icon_check"></i>
+                                        <div class="tagBox">
+                                            <div class="g_Right"><i class="icon icon_fav2 j_tips_handler "
+                                                                    data-orderid="220813T1929121398"
+                                                                    data-direction="bottom"
+                                                                    data-title="设为推荐项" data-content=""></i></div>
+                                            <span class="tag tag_black rarity_common">普通级</span></div>
+                                    </li>
+                                    <li id="sell_order_220723T1932844783" class="salable my_selling nowear"
+                                        data-goodsid="37175"
+                                        data-orderid="220723T1932844783" data-price="0.52" data-appid="730"
+                                        data-goods-name="封装的涂鸦 | 盲狙 (酱紫)"
+                                        data-icon-url="https://g.fp.ps.netease.com/market/file/5a7ac49420e3db5068798c32ZwCXKkrM"
+                                        data-goods-tags="{&quot;category&quot;: {&quot;category&quot;: &quot;category&quot;, &quot;id&quot;: 659, &quot;internal_name&quot;: &quot;csgo_type_spray&quot;, &quot;localized_name&quot;: &quot;\u6d82\u9e26&quot;}, &quot;category_group&quot;: {&quot;category&quot;: &quot;category_group&quot;, &quot;id&quot;: 657, &quot;internal_name&quot;: &quot;other&quot;, &quot;localized_name&quot;: &quot;\u5176\u4ed6&quot;}, &quot;quality&quot;: {&quot;category&quot;: &quot;quality&quot;, &quot;id&quot;: 516, &quot;internal_name&quot;: &quot;normal&quot;, &quot;localized_name&quot;: &quot;\u666e\u901a&quot;}, &quot;rarity&quot;: {&quot;category&quot;: &quot;rarity&quot;, &quot;id&quot;: 594, &quot;internal_name&quot;: &quot;common&quot;, &quot;localized_name&quot;: &quot;\u666e\u901a\u7ea7&quot;}, &quot;spraycolorcategory&quot;: {&quot;category&quot;: &quot;spraycolorcategory&quot;, &quot;id&quot;: 507, &quot;internal_name&quot;: &quot;tint17&quot;, &quot;localized_name&quot;: &quot;\u9171\u7d2b&quot;}, &quot;type&quot;: {&quot;category&quot;: &quot;type&quot;, &quot;id&quot;: 584, &quot;internal_name&quot;: &quot;csgo_type_spray&quot;, &quot;localized_name&quot;: &quot;\u6d82\u9e26&quot;}}"
+                                        data-assetid="26297937961" data-coupon-infos="null"><a href="javascript:;"
+                                                                                               class="img img_a item-detail-img"
+                                                                                               data-classid="1989289744"
+                                                                                               data-instanceid="302028390"
+                                                                                               data-assetid="26297937961"
+                                                                                               data-contextid="2"
+                                                                                               data-appid="730"
+                                                                                               data-origin="my-selling"
+                                                                                               style="background-image: url(&quot;https://buff.163.com/static/images/item_bg.png&quot;); background-position:center;"
+                                                                                               data-src_url_background="https://buff.163.com/static/images/item_bg.png"
+                                                                                               data-inspect_trn_url_background="https://spect.fp.ps.netease.com/file/613abf6309463c49b9c8aa93Mt9e2tVQ03">
+                                        <img src="./正在出售_网易BUFF饰品交易平台_files/5a7ac49420e3db5068798c32ZwCXKkrM"
+                                             data-src_url="https://g.fp.ps.netease.com/market/file/5a7ac49420e3db5068798c32ZwCXKkrM?fop=imageView/2/w/245/h/230"
+                                             style="object-fit:contain; "> </a>
+                                        <h3><a href="https://buff.163.com/goods/37175"
+                                               onclick="event.stopPropagation();"
+                                               target="_blank" title="封装的涂鸦 | 盲狙 (酱紫)">封装的涂鸦 | 盲狙 (酱紫)</a></h3>
+                                        <p><strong class="f_Strong sell_order_price">¥ 0
+                                            <small>.52</small>
+                                        </strong></p>
+                                        <i class="icon icon_check"></i>
+                                        <div class="tagBox">
+                                            <div class="g_Right"><i class="icon icon_fav2 j_tips_handler "
+                                                                    data-orderid="220723T1932844783"
+                                                                    data-direction="bottom"
+                                                                    data-title="设为推荐项" data-content=""></i></div>
+                                            <span class="tag tag_black rarity_common">普通级</span></div>
+                                        <div class="tagBoxB">
+                                            <div class="tagBoxB_R "><a href="javascript:;"
+                                                                       class="shalow-btn shalow-btn_hidden asset-remark-edit remark_without_stickers"
+                                                                       data-assetid="26297937961"
+                                                                       data-buy_price="">备注</a></div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="clear"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="footer footer-transparent d-print-none">
+                <div class="container-xl">
+                    <div class="row text-center align-items-center flex-row-reverse">
+                        <div class="col-lg-auto ms-lg-auto">
+                            <ul class="list-inline list-inline-dots mb-0">
+                                <li class="list-inline-item"><a href="./docs/index.html" class="link-secondary">Documentation</a>
+                                </li>
+                                <li class="list-inline-item"><a href="./license.html" class="link-secondary">License</a>
+                                </li>
+                                <li class="list-inline-item"><a href="https://github.com/tabler/tabler" target="_blank"
+                                                                class="link-secondary" rel="noopener">Source code</a>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="https://github.com/sponsors/codecalm" target="_blank"
+                                       class="link-secondary" rel="noopener">
+                                        <!-- Download SVG icon from http://tabler-icons.io/i/heart -->
+                                        <svg xmlns="http://www.w3.org/2000/svg"
+                                             class="icon text-pink icon-filled icon-inline" width="24" height="24"
+                                             viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none"
+                                             stroke-linecap="round" stroke-linejoin="round">
+                                            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+                                            <path d="M19.5 13.572l-7.5 7.428l-7.5 -7.428m0 0a5 5 0 1 1 7.5 -6.566a5 5 0 1 1 7.5 6.572"/>
+                                        </svg>
+                                        Sponsor
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-12 col-lg-auto mt-3 mt-lg-0">
+                            <ul class="list-inline list-inline-dots mb-0">
+                                <li class="list-inline-item">
+                                    Copyright &copy; 2022
+                                    <a href="." class="link-secondary">Tabler</a>.
+                                    All rights reserved.
+                                </li>
+                                <li class="list-inline-item">
+                                    <a href="./changelog.html" class="link-secondary" rel="noopener">
+                                        v1.0.0-beta10
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </footer>
+        </div>
+    </div>
+</div>
+<!-- Libs JS -->
+<!-- Tabler Core -->
+<th:block th:replace="common :: #common-scripts"></th:block>
+</body>
+</html>
