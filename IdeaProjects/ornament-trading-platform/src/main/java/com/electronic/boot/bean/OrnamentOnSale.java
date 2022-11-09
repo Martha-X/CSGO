@@ -1,8 +1,12 @@
 package com.electronic.boot.bean;
 
+import lombok.Data;
+import lombok.ToString;
+
 import java.io.Serializable;
 import java.math.BigDecimal;
-
+@Data
+@ToString
 public class OrnamentOnSale implements Serializable {
     private Integer id;
 
@@ -85,6 +89,8 @@ public class OrnamentOnSale implements Serializable {
     private String avatar;
 
     private String nickname;
+
+    private Integer isSoldOut;
 
     private static final long serialVersionUID = 1L;
 
@@ -414,5 +420,13 @@ public class OrnamentOnSale implements Serializable {
 
     public void setNickname(String nickname) {
         this.nickname = nickname == null ? null : nickname.trim();
+    }
+
+    public Integer getIsSoldOut() {
+        return isSoldOut;
+    }
+
+    public void setIsSoldOut(Integer isSoldOut) {
+        this.isSoldOut = isSoldOut;
     }
 }

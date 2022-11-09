@@ -69,7 +69,7 @@
    domainObjectName：指定生成的JavaBean的类名
    schema：指定数据库
 -->
-        <table tableName="ornament_on_sale" domainObjectName="OrnamentOnSale" schema="csgo">
+        <table tableName="ornament_sell_record" domainObjectName="OrnamentSellRecord" schema="csgo">
             <!-- 用于指定生成实体类时是否使用实际的列名作为实体类的属性名。false是 Camel Case驼峰命名法风格，如表中last_name字段对应的就是Java类的lastName属性-->
             <property name="useActualColumnNames" value="false"></property>
         </table>

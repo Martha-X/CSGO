@@ -30,10 +30,30 @@ public class IndexController {
         return "market";
     }
 
-    ;
+    @GetMapping("/toSellPage")
+    public String toSellPage() {
+        return "sell";
+    }
+
 
     @GetMapping("/toAccountPage")
     public String toAccountPage() {
         return "account";
+    }
+
+    @GetMapping("/toInventoryPage")
+    public String toInventoryPage() {
+        return "inventory";
+    }
+
+
+    @GetMapping("/toPurchaseRecordPage")
+    public String toPurchaseRecordPage() {
+        return "purchase-record";
+    }
+
+    @GetMapping("/toSellRecordPage")
+    public String toSelleRecordPage() {
+        return "sell-record";
     }
 }

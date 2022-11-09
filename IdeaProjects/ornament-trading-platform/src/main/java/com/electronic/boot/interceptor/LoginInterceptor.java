@@ -9,8 +9,6 @@ import javax.servlet.http.HttpSession;
 public class LoginInterceptor implements HandlerInterceptor {
     /**
      * @Description 登录拦截器
-     * @Param
-     * @Return
      * @Author electroNic
      * @Date 2022/10/30 17:47
      */

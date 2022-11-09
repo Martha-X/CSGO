@@ -32,6 +32,8 @@ public class OrnamentOnSaleServiceImpl implements OrnamentOnSaleService {
         Page<Object> ornaments = PageHelper.startPage(pageNum, pageSize);
         OrnamentOnSaleExample example = new OrnamentOnSaleExample();
         OrnamentOnSaleExample.Criteria criteria = example.createCriteria();
+        // 所有上架了的item
+        criteria.andIsSoldOutEqualTo(0);
         if (!StringUtils.isEmpty(wearZone)&&!wearZone.equals("")) {
             if(!wearZone.equals("不限")){
                 String[] paintwear = wearZone.split("-");

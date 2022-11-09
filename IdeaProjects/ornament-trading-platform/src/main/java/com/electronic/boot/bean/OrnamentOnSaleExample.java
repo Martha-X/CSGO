@@ -239,14 +239,7 @@ public class OrnamentOnSaleExample {
             addCriterion("price is null");
             return (Criteria) this;
         }
-        public Criteria andPriceAsc(){
-            addCriterion("order by price asc");
-            return (Criteria) this;
-        }
-        public Criteria andPriceDesc(){
-            addCriterion("order by price desc");
-            return (Criteria) this;
-        }
+
         public Criteria andPriceIsNotNull() {
             addCriterion("price is not null");
             return (Criteria) this;
@@ -2829,6 +2822,66 @@ public class OrnamentOnSaleExample {
 
         public Criteria andNicknameNotBetween(String value1, String value2) {
             addCriterion("nickname not between", value1, value2, "nickname");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSoldOutIsNull() {
+            addCriterion("is_sold_out is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSoldOutIsNotNull() {
+            addCriterion("is_sold_out is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSoldOutEqualTo(Integer value) {
+            addCriterion("is_sold_out =", value, "isSoldOut");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSoldOutNotEqualTo(Integer value) {
+            addCriterion("is_sold_out <>", value, "isSoldOut");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSoldOutGreaterThan(Integer value) {
+            addCriterion("is_sold_out >", value, "isSoldOut");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSoldOutGreaterThanOrEqualTo(Integer value) {
+            addCriterion("is_sold_out >=", value, "isSoldOut");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSoldOutLessThan(Integer value) {
+            addCriterion("is_sold_out <", value, "isSoldOut");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSoldOutLessThanOrEqualTo(Integer value) {
+            addCriterion("is_sold_out <=", value, "isSoldOut");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSoldOutIn(List<Integer> values) {
+            addCriterion("is_sold_out in", values, "isSoldOut");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSoldOutNotIn(List<Integer> values) {
+            addCriterion("is_sold_out not in", values, "isSoldOut");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSoldOutBetween(Integer value1, Integer value2) {
+            addCriterion("is_sold_out between", value1, value2, "isSoldOut");
+            return (Criteria) this;
+        }
+
+        public Criteria andIsSoldOutNotBetween(Integer value1, Integer value2) {
+            addCriterion("is_sold_out not between", value1, value2, "isSoldOut");
             return (Criteria) this;
         }
     }

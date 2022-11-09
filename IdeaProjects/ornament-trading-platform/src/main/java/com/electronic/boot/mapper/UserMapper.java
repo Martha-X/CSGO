@@ -2,12 +2,12 @@ package com.electronic.boot.mapper;
 
 import com.electronic.boot.bean.User;
 import com.electronic.boot.bean.UserExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Mapper
+@Repository
 public interface UserMapper {
     long countByExample(UserExample example);
 

@@ -3,12 +3,12 @@ package com.electronic.boot.mapper;
 import com.electronic.boot.bean.OrnamentMarket;
 import com.electronic.boot.bean.OrnamentMarketExample;
 import com.electronic.boot.bean.OrnamentOnSaleExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Mapper
+@Repository
 public interface OrnamentMarketMapper {
     long countByExample(OrnamentMarketExample example);
 

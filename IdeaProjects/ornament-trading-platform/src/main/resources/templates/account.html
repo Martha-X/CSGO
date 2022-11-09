@@ -21,8 +21,7 @@
 <body>
 <div class="page">
     <!--引入公共部分-->
-    <header th:replace="common :: #header-tabler"></header>
-    <div th:replace="common :: #header-search"></div>
+    <div th:replace="common :: #tablerx"></div>
     <div class="page-wrapper">
         <div class="container-xl">
             <!-- Page title -->
@@ -381,6 +380,7 @@
     for (let i = 1; i < eachSpan.length; i++) {
         eachSpan[i].addEventListener("click",function(){
             removeOtherSpanClass()
+            console.log(this)
             this.setAttribute("class","on")
             $(".rechargeSpan > input")[0].value = this.innerText.substring(2);
         });

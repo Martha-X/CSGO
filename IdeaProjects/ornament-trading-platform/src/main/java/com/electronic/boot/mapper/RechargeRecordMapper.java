@@ -2,11 +2,12 @@ package com.electronic.boot.mapper;
 
 import com.electronic.boot.bean.RechargeRecord;
 import com.electronic.boot.bean.RechargeRecordExample;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
 import java.util.List;
-@Mapper
+
+@Repository
 public interface RechargeRecordMapper {
     long countByExample(RechargeRecordExample example);
 
