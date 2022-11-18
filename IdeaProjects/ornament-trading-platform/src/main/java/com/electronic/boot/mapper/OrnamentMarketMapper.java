@@ -1,34 +1,20 @@
 package com.electronic.boot.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.electronic.boot.bean.OrnamentMarket;
-import com.electronic.boot.bean.OrnamentMarketExample;
-import com.electronic.boot.bean.OrnamentOnSaleExample;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
+/**
+* @author Administrator
+* @description 针对表【ornament_market】的数据库操作Mapper
+* @createDate 2022-11-18 22:39:37
+* @Entity com.electronic.boot.bean.OrnamentMarket
+*/
 @Repository
-public interface OrnamentMarketMapper {
-    long countByExample(OrnamentMarketExample example);
+public interface OrnamentMarketMapper extends BaseMapper<OrnamentMarket> {
 
-    int deleteByExample(OrnamentMarketExample example);
-
-    int deleteByPrimaryKey(Integer id);
-
-    int insert(OrnamentMarket record);
-
-    int insertSelective(OrnamentMarket record);
-
-    List<OrnamentMarket> selectByExample(OrnamentOnSaleExample.Criteria example);
-
-    OrnamentMarket selectByPrimaryKey(Integer id);
-
-    int updateByExampleSelective(@Param("record") OrnamentMarket record, @Param("example") OrnamentMarketExample example);
-
-    int updateByExample(@Param("record") OrnamentMarket record, @Param("example") OrnamentMarketExample example);
-
-    int updateByPrimaryKeySelective(OrnamentMarket record);
-
-    int updateByPrimaryKey(OrnamentMarket record);
 }
+
+
+
+

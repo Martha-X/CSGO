@@ -1,34 +1,32 @@
 package com.electronic.boot.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.electronic.boot.bean.OrnamentInventory;
-import com.electronic.boot.bean.OrnamentInventoryExample;
+import com.electronic.boot.bean.OrnamentOnSale;
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
+/**
+ * @author Administrator
+ * @description 针对表【ornament_inventory】的数据库操作Mapper
+ * @createDate 2022-11-18 20:03:44
+ * @Entity com.electronic.boot.bean.OrnamentInventory
+ */
 @Repository
-public interface OrnamentInventoryMapper {
-    long countByExample(OrnamentInventoryExample example);
+public interface OrnamentInventoryMapper extends BaseMapper<OrnamentInventory> {
 
-    int deleteByExample(OrnamentInventoryExample example);
+    /**
+     * @param page
+     * @param userId
+     * @return 对应用户库存的饰品记录
+     */
+    Page<OrnamentOnSale> selectOrnamentInventoryAsPageByUserId(Page<OrnamentOnSale> page, @Param("userId") String userId);
 
-    int deleteByPrimaryKey(Integer id);
 
-    int insert(OrnamentInventory record);
-
-    int insertSelective(OrnamentInventory record);
-
-    List<OrnamentInventory> selectByExample(OrnamentInventoryExample example);
-
-    OrnamentInventory selectByPrimaryKey(Integer id);
-
-    int updateByExampleSelective(@Param("record") OrnamentInventory record, @Param("example") OrnamentInventoryExample example);
-
-    int updateByExample(@Param("record") OrnamentInventory record, @Param("example") OrnamentInventoryExample example);
-
-    int updateByPrimaryKeySelective(OrnamentInventory record);
-
-    int updateByPrimaryKey(OrnamentInventory record);
-
-    OrnamentInventory selectInventoryByUserId(@Param("userId") String userId);
+    Page<OrnamentOnSale> selectOrnamentSelfSellingAsPageByUserId(Page<OrnamentOnSale> page, @Param("userId") String userId);
 }
+
+
+
+

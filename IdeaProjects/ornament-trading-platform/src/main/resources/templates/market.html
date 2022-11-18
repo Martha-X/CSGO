@@ -267,10 +267,8 @@
             dataType: "json",
             //成功响应的结果
             success: function (data) {
-                if (data.code == 200) {
-                    console.log(data);
-                    render(data.data);
-                }
+                console.log(data);
+                render(data.data);
             }
         })
     });
@@ -278,9 +276,9 @@
     function render(data){
         var pageNum = data.pageNum;
         var pageSize = data.pageSize;
-        var goodsTotal = data.total;
+        var goodsTotal = data.totalCount;
         $(".market-description")[0].innerText = pageNum + '-' + pageSize + ' of ' +  goodsTotal + ' ornaments'
-        var dataList = data.list;
+        var dataList = data.items;
         var marketDataStr = "";
         for (let i = 0; i < dataList.length; i++) {
             marketDataStr += '<div class="col-sm-6 col-lg-4">\n' +
@@ -316,7 +314,7 @@
             '                                prev\n' +
             '                            </a>\n' +
             '                        </li>\n';
-        for (let i = 1; i <= data.navigatepageNums.length; i++) {
+        for (let i = 1; i <= data.navigatePageNums.length; i++) {
             marketPageStr += '<li class="page-item' + (pageNum == i ? ' active"' : '"') + '>\n' +
                 '<a class="page-link" href="javascript:void(0)" onclick="toPageNum('+i+')">' + i + '</a></li>\n'
         }

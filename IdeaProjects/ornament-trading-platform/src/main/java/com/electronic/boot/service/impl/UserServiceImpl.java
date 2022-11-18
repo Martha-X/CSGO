@@ -1,26 +1,28 @@
 package com.electronic.boot.service.impl;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.baomidou.mybatisplus.core.toolkit.StringUtils;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.electronic.boot.bean.User;
-import com.electronic.boot.bean.UserExample;
 import com.electronic.boot.mapper.UserMapper;
 import com.electronic.boot.service.UserService;
-import lombok.extern.slf4j.Slf4j;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-@Slf4j
-@Service
-public class UserServiceImpl implements UserService {
-    @Autowired
-    private UserMapper userMapper;
 
+/**
+ * @author Administrator
+ * @description 针对表【user】的数据库操作Service实现
+ * @createDate 2022-11-18 22:32:19
+ */
+@Service
+public class UserServiceImpl extends ServiceImpl<UserMapper, User>
+        implements UserService {
 
     @Override
     public User getUser(String username, String password) {
-        UserExample userExample = new UserExample();
-        UserExample.Criteria criteria = userExample.createCriteria();
-        criteria.andUsernameEqualTo(username);
-        criteria.andPasswordEqualTo(password);
-        return userMapper.selectByExample(userExample).get(0);
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(StringUtils.isNotBlank(username), User::getUsername, username)
+                .eq(StringUtils.isNotBlank(password), User::getPassword, password);
+        return getOne(wrapper);
     }
 
     @Override
@@ -28,19 +30,20 @@ public class UserServiceImpl implements UserService {
         String id = String.valueOf(System.currentTimeMillis()).substring(0, 10);
         String idToUse = "U" + id;
         user.setId(idToUse);
-        userMapper.insertSelective(user);
-        UserExample example = new UserExample();
-        UserExample.Criteria criteria = example.createCriteria();
-        criteria.andIdEqualTo(idToUse);
-        return userMapper.selectByExample(example).get(0);
+        save(user);
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(StringUtils.isNotBlank(idToUse), User::getUsername, idToUse);
+        return getOne(wrapper);
     }
 
     @Override
     public User getUserById(String id) {
-        UserExample example = new UserExample();
-        UserExample.Criteria criteria = example.createCriteria();
-        criteria.andIdEqualTo(id);
-        return userMapper.selectByExample(example).get(0);
+        LambdaQueryWrapper<User> wrapper = new LambdaQueryWrapper<>();
+        wrapper.eq(StringUtils.isNotBlank(id), User::getUsername, id);
+        return getOne(wrapper);
     }
-
 }
+
+
+
+

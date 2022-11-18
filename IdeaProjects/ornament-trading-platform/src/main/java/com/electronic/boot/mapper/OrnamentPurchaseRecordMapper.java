@@ -1,33 +1,20 @@
 package com.electronic.boot.mapper;
 
 import com.electronic.boot.bean.OrnamentPurchaseRecord;
-import com.electronic.boot.bean.OrnamentPurchaseRecordExample;
-import org.apache.ibatis.annotations.Param;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
+/**
+* @author Administrator
+* @description 针对表【ornament_purchase_record】的数据库操作Mapper
+* @createDate 2022-11-18 23:18:25
+* @Entity com.electronic.boot.bean.OrnamentPurchaseRecord
+*/
 @Repository
-public interface OrnamentPurchaseRecordMapper {
-    long countByExample(OrnamentPurchaseRecordExample example);
+public interface OrnamentPurchaseRecordMapper extends BaseMapper<OrnamentPurchaseRecord> {
 
-    int deleteByExample(OrnamentPurchaseRecordExample example);
-
-    int deleteByPrimaryKey(String id);
-
-    int insert(OrnamentPurchaseRecord record);
-
-    int insertSelective(OrnamentPurchaseRecord record);
-
-    List<OrnamentPurchaseRecord> selectByExample(OrnamentPurchaseRecordExample example);
-
-    OrnamentPurchaseRecord selectByPrimaryKey(String id);
-
-    int updateByExampleSelective(@Param("record") OrnamentPurchaseRecord record, @Param("example") OrnamentPurchaseRecordExample example);
-
-    int updateByExample(@Param("record") OrnamentPurchaseRecord record, @Param("example") OrnamentPurchaseRecordExample example);
-
-    int updateByPrimaryKeySelective(OrnamentPurchaseRecord record);
-
-    int updateByPrimaryKey(OrnamentPurchaseRecord record);
 }
+
+
+
+

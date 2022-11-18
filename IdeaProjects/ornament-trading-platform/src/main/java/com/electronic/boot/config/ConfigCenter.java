@@ -1,5 +1,8 @@
 package com.electronic.boot.config;
 
+import com.baomidou.mybatisplus.annotation.DbType;
+import com.baomidou.mybatisplus.extension.plugins.MybatisPlusInterceptor;
+import com.baomidou.mybatisplus.extension.plugins.inner.PaginationInnerInterceptor;
 import com.electronic.boot.interceptor.LoginInterceptor;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.context.annotation.Bean;
@@ -18,8 +21,17 @@ public class ConfigCenter {
             public void addInterceptors(InterceptorRegistry registry) {
                 registry.addInterceptor(new LoginInterceptor())
                         .addPathPatterns("/**")
-                        .excludePathPatterns("/rechargeRecord/dealRechargeRecordWithSuccess","/alipayResult","/user/**","/","/login","/login.html","/dist/**","/static/**","/jquery/**");
+                        .excludePathPatterns("/rechargeRecord/dealRechargeRecordWithSuccess", "/alipayResult", "/user/**", "/", "/login", "/login.html", "/dist/**", "/static/**", "/jquery/**");
             }
         };
+    }
+
+    // 配置MP拦截器
+    @Bean
+    public MybatisPlusInterceptor mybatisPlusInterceptor() {
+        MybatisPlusInterceptor interceptor = new MybatisPlusInterceptor();
+        // 配置MP分页插件
+        interceptor.addInnerInterceptor(new PaginationInnerInterceptor(DbType.MYSQL));
+        return interceptor;
     }
 }

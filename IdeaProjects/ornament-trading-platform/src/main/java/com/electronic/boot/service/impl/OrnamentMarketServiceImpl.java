@@ -1,35 +1,33 @@
 package com.electronic.boot.service.impl;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.electronic.boot.bean.OrnamentMarket;
 import com.electronic.boot.mapper.OrnamentMarketMapper;
 import com.electronic.boot.service.OrnamentMarketService;
-import com.github.pagehelper.Page;
-import com.github.pagehelper.PageHelper;
-import com.github.pagehelper.PageInfo;
-import lombok.extern.slf4j.Slf4j;
+import com.electronic.boot.util.BitResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-@Slf4j
+/**
+ * @author Administrator
+ * @description 针对表【ornament_market】的数据库操作Service实现
+ * @createDate 2022-11-18 22:39:37
+ */
 @Service
-public class OrnamentMarketServiceImpl implements OrnamentMarketService {
+public class OrnamentMarketServiceImpl extends ServiceImpl<OrnamentMarketMapper, OrnamentMarket>
+        implements OrnamentMarketService {
+
     @Autowired
-    private OrnamentMarketMapper ornamentMarketMapper;
+    private OrnamentMarketMapper marketMapper;
 
     @Override
-    public PageInfo<OrnamentMarket> getAllOrnamentByPage(Integer pageNum, Integer pageSize) {
-        log.info("pageNum:{}",pageNum);
-        log.info("pageSize:{}",pageSize);
-        //开启分页
-        Page<Object> ornaments = PageHelper.startPage(pageNum, pageSize);
-        List<OrnamentMarket> ornamentMarkets = ornamentMarketMapper.selectByExample(null);
-        PageInfo<OrnamentMarket> pageInfo = new PageInfo<>(ornamentMarkets);
-        return pageInfo;
-    }
-
-    @Override
-    public PageInfo<OrnamentMarket> selectOrnamentByName(String name, Integer pageNum, Integer pageSize) {
-        return null;
+    public BitResult<OrnamentMarket> selectAllOrnamentsAsPage(Integer pageNum, Integer pageSize) {
+        Page<OrnamentMarket> marketPageInfo = marketMapper.selectPage(new Page<>(pageNum, pageSize), null);
+        return new BitResult<>(marketPageInfo);
     }
 }
+
+
+
+

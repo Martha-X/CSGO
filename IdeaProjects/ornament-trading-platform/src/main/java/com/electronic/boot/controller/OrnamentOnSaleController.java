@@ -3,11 +3,11 @@ package com.electronic.boot.controller;
 import com.electronic.boot.bean.OrnamentOnSale;
 import com.electronic.boot.service.OrnamentOnSaleService;
 import com.electronic.boot.util.BitResult;
-import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
@@ -25,25 +25,26 @@ public class OrnamentOnSaleController {
                                        @RequestParam(value = "pageSize", defaultValue = "10", required = false) Integer pageSize,
                                        @RequestParam(value = "wearZone", required = false) String wearZone,
                                        @RequestParam(value = "conditionZone", required = false) String conditionZone) {
-        BitResult result = new BitResult();
-        log.info("{}", id);
-        PageInfo<OrnamentOnSale> allOrnamentById = onSaleService.getAllOrnamentById(id, pageNum, pageSize,wearZone,conditionZone);
-        result.setData(allOrnamentById);
-        if (allOrnamentById.getList().size() > 0) {
-            String name = allOrnamentById.getList().get(0).getName();
-            String keyword = name.substring(name.indexOf('(') + 1, name.length() - 1);
-            result.setKeyword(keyword);
-        }
-        result.setWearZone(wearZone);
-        result.setConditionZone(conditionZone);
-        return result.success("ok");
+        return onSaleService.selectAllOrnamentsById(id, pageNum, pageSize,wearZone,conditionZone);
     }
 
     @ResponseBody
     @GetMapping("/getEveryExteriorGoods")
     public BitResult getEveryExteriorGoods(@RequestParam("name") String name) {
-        List<Map<String, Object>> everyExteriorGoods = onSaleService.getEveryExteriorGoods(name);
-        log.info("{}", everyExteriorGoods);
-        return new BitResult(everyExteriorGoods).success("ok");
+        return onSaleService.getEveryExteriorGoods(name);
+    }
+
+    @PostMapping("/payForGoodsItem")
+    public BitResult payForGoodsItem(@RequestParam("userId")String userId,
+                                     @RequestParam("accountBalance") BigDecimal balance,
+                                     @RequestParam("itemId") Integer itemId){
+        try {
+            BitResult bitResult = onSaleService.dealThisItemPay(userId, balance, itemId);
+            return bitResult;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new BitResult().fail("购买失败");
+        }
+
     }
 }

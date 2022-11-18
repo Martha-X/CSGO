@@ -8,11 +8,366 @@
     <link rel="stylesheet" th:href="@{/dist/css/main.css}">
     <style>
         .market-header {
-            background:url();
+            background: url();
         }
-        body > div.page > div.page-wrapper > div.page-body > div > div > div.l_Layout > div.mb-3 > div.detail-tab-cont{
+
+        body > div.page > div.page-wrapper > div.page-body > div > div > div.l_Layout > div.mb-3 > div.detail-tab-cont {
             background: none;
             min-height: 466px;
+        }
+
+        #modal-success .modal-footer .row > col:first-child{
+            color: #1e293b;
+        }
+        #modal-success .modal-footer .row > col:last-child{
+            color: #fafbfc;
+        }
+        #modal-success{
+            box-sizing: border-box;
+        }
+        #modal-success h3{
+            line-height: 1.5;
+            margin-top: 0;
+            margin-bottom: 0.5rem;
+            font-size: 1rem;
+            font-weight: 600;
+            --tblr-blue: #206bc4;
+            --tblr-indigo: #4263eb;
+            --tblr-purple: #ae3ec9;
+            --tblr-pink: #d6336c;
+            --tblr-red: #d63939;
+            --tblr-orange: #f76707;
+            --tblr-yellow: #f59f00;
+            --tblr-green: #2fb344;
+            --tblr-teal: #0ca678;
+            --tblr-cyan: #17a2b8;
+            --tblr-white: #ffffff;
+            --tblr-gray: #475569;
+            --tblr-gray-dark: #1e293b;
+            --tblr-gray-100: #f1f5f9;
+            --tblr-gray-200: #e2e8f0;
+            --tblr-gray-300: #cbd5e1;
+            --tblr-gray-400: #94a3b8;
+            --tblr-gray-500: #64748b;
+            --tblr-gray-600: #475569;
+            --tblr-gray-700: #334155;
+            --tblr-gray-800: #1e293b;
+            --tblr-gray-900: #0f172a;
+            --tblr-primary: #206bc4;
+            --tblr-secondary: #626976;
+            --tblr-success: #2fb344;
+            --tblr-info: #4299e1;
+            --tblr-warning: #f76707;
+            --tblr-danger: #d63939;
+            --tblr-light: #fafbfc;
+            --tblr-dark: #1e293b;
+            --tblr-muted: #626976;
+            --tblr-primary-rgb: 32,107,196;
+            --tblr-secondary-rgb: 98,105,118;
+            --tblr-success-rgb: 47,179,68;
+            --tblr-info-rgb: 66,153,225;
+            --tblr-warning-rgb: 247,103,7;
+            --tblr-danger-rgb: 214,57,57;
+            --tblr-light-rgb: 250,251,252;
+            --tblr-dark-rgb: 30,41,59;
+            --tblr-muted-rgb: 98,105,118;
+            --tblr-white-rgb: 255,255,255;
+            --tblr-black-rgb: 0,0,0;
+            --tblr-body-color-rgb: 30,41,59;
+            --tblr-body-bg-rgb: 245,247,251;
+            --tblr-font-sans-serif: -apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+            --tblr-font-monospace: Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+            --tblr-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+            --tblr-body-font-family: var(--tblr-font-sans-serif);
+            --tblr-body-font-size: 0.875rem;
+            --tblr-body-font-weight: 400;
+            --tblr-body-line-height: 1.4285714286;
+            --tblr-body-color: #1e293b;
+            --tblr-body-bg: #f5f7fb;
+            --tblr-card-bg: #ffffff;
+            --tblr-card-bg-rgb: 255,255,255;
+            --tblr-border-color: #e6e7e9;
+            --tblr-border-color-rgb: 230,231,233;
+            --tblr-border-color-light: #f2f3f4;
+            --tblr-border-color-light-rgb: 242,243,244;
+            font-family: var(--tblr-body-font-family);
+            color: var(--tblr-body-color);
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            letter-spacing: 0;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: "liga" 0;
+            -webkit-font-smoothing: antialiased;
+            pointer-events: auto;
+            text-align: center!important;
+            box-sizing: border-box;
+        }
+        #modal-success .text-muted{
+            --tblr-blue: #206bc4;
+            --tblr-indigo: #4263eb;
+            --tblr-purple: #ae3ec9;
+            --tblr-pink: #d6336c;
+            --tblr-red: #d63939;
+            --tblr-orange: #f76707;
+            --tblr-yellow: #f59f00;
+            --tblr-green: #2fb344;
+            --tblr-teal: #0ca678;
+            --tblr-cyan: #17a2b8;
+            --tblr-white: #ffffff;
+            --tblr-gray: #475569;
+            --tblr-gray-dark: #1e293b;
+            --tblr-gray-100: #f1f5f9;
+            --tblr-gray-200: #e2e8f0;
+            --tblr-gray-300: #cbd5e1;
+            --tblr-gray-400: #94a3b8;
+            --tblr-gray-500: #64748b;
+            --tblr-gray-600: #475569;
+            --tblr-gray-700: #334155;
+            --tblr-gray-800: #1e293b;
+            --tblr-gray-900: #0f172a;
+            --tblr-primary: #206bc4;
+            --tblr-secondary: #626976;
+            --tblr-success: #2fb344;
+            --tblr-info: #4299e1;
+            --tblr-warning: #f76707;
+            --tblr-danger: #d63939;
+            --tblr-light: #fafbfc;
+            --tblr-dark: #1e293b;
+            --tblr-muted: #626976;
+            --tblr-primary-rgb: 32,107,196;
+            --tblr-secondary-rgb: 98,105,118;
+            --tblr-success-rgb: 47,179,68;
+            --tblr-info-rgb: 66,153,225;
+            --tblr-warning-rgb: 247,103,7;
+            --tblr-danger-rgb: 214,57,57;
+            --tblr-light-rgb: 250,251,252;
+            --tblr-dark-rgb: 30,41,59;
+            --tblr-muted-rgb: 98,105,118;
+            --tblr-white-rgb: 255,255,255;
+            --tblr-black-rgb: 0,0,0;
+            --tblr-body-color-rgb: 30,41,59;
+            --tblr-body-bg-rgb: 245,247,251;
+            --tblr-font-sans-serif: -apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+            --tblr-font-monospace: Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+            --tblr-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+            --tblr-body-font-family: var(--tblr-font-sans-serif);
+            --tblr-body-font-size: 0.875rem;
+            --tblr-body-font-weight: 400;
+            --tblr-body-line-height: 1.4285714286;
+            --tblr-body-color: #1e293b;
+            --tblr-body-bg: #f5f7fb;
+            --tblr-card-bg: #ffffff;
+            --tblr-card-bg-rgb: 255,255,255;
+            --tblr-border-color: #e6e7e9;
+            --tblr-border-color-rgb: 230,231,233;
+            --tblr-border-color-light: #f2f3f4;
+            --tblr-border-color-light-rgb: 242,243,244;
+            font-family: var(--tblr-body-font-family);
+            font-size: var(--tblr-body-font-size);
+            font-weight: var(--tblr-body-font-weight);
+            line-height: var(--tblr-body-line-height);
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            letter-spacing: 0;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: "liga" 0;
+            -webkit-font-smoothing: antialiased;
+            pointer-events: auto;
+            text-align: center!important;
+            box-sizing: border-box;
+            --tblr-text-opacity: 1;
+            color: #626976!important;
+        }
+        #modal-success > div > div > div.modal-footer > div > div > div:nth-child(1) > a{
+            --tblr-blue: #206bc4;
+            --tblr-indigo: #4263eb;
+            --tblr-purple: #ae3ec9;
+            --tblr-pink: #d6336c;
+            --tblr-red: #d63939;
+            --tblr-orange: #f76707;
+            --tblr-yellow: #f59f00;
+            --tblr-green: #2fb344;
+            --tblr-teal: #0ca678;
+            --tblr-cyan: #17a2b8;
+            --tblr-white: #ffffff;
+            --tblr-gray: #475569;
+            --tblr-gray-dark: #1e293b;
+            --tblr-gray-100: #f1f5f9;
+            --tblr-gray-200: #e2e8f0;
+            --tblr-gray-300: #cbd5e1;
+            --tblr-gray-400: #94a3b8;
+            --tblr-gray-500: #64748b;
+            --tblr-gray-600: #475569;
+            --tblr-gray-700: #334155;
+            --tblr-gray-800: #1e293b;
+            --tblr-gray-900: #0f172a;
+            --tblr-primary: #206bc4;
+            --tblr-secondary: #626976;
+            --tblr-success: #2fb344;
+            --tblr-info: #4299e1;
+            --tblr-warning: #f76707;
+            --tblr-danger: #d63939;
+            --tblr-light: #fafbfc;
+            --tblr-dark: #1e293b;
+            --tblr-muted: #626976;
+            --tblr-primary-rgb: 32,107,196;
+            --tblr-secondary-rgb: 98,105,118;
+            --tblr-success-rgb: 47,179,68;
+            --tblr-info-rgb: 66,153,225;
+            --tblr-warning-rgb: 247,103,7;
+            --tblr-danger-rgb: 214,57,57;
+            --tblr-light-rgb: 250,251,252;
+            --tblr-dark-rgb: 30,41,59;
+            --tblr-muted-rgb: 98,105,118;
+            --tblr-white-rgb: 255,255,255;
+            --tblr-black-rgb: 0,0,0;
+            --tblr-body-color-rgb: 30,41,59;
+            --tblr-body-bg-rgb: 245,247,251;
+            --tblr-font-sans-serif: -apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+            --tblr-font-monospace: Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+            --tblr-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+            --tblr-body-font-family: var(--tblr-font-sans-serif);
+            --tblr-body-font-size: 0.875rem;
+            --tblr-body-font-weight: 400;
+            --tblr-body-line-height: 1.4285714286;
+            --tblr-body-color: #1e293b;
+            --tblr-body-bg: #f5f7fb;
+            --tblr-card-bg: #ffffff;
+            --tblr-card-bg-rgb: 255,255,255;
+            --tblr-border-color: #e6e7e9;
+            --tblr-border-color-rgb: 230,231,233;
+            --tblr-border-color-light: #f2f3f4;
+            --tblr-border-color-light-rgb: 242,243,244;
+            font-family: var(--tblr-body-font-family);
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            letter-spacing: 0;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: "liga" 0;
+            -webkit-font-smoothing: antialiased;
+            pointer-events: auto;
+            --tblr-gutter-x: 1rem;
+            --tblr-gutter-y: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            text-decoration-skip-ink: auto;
+            font-weight: 500;
+            line-height: 1.4285714286;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: .4375rem 1rem;
+            font-size: .875rem;
+            border-radius: 4px;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            width: 100%!important;
+            --tblr-btn-color-text-rgb: var(--tblr-body-color-rgb);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            border-color: var(--tblr-border-color);
+            white-space: nowrap;
+            background-color: var(--tblr-btn-color,var(--tblr-card-bg));
+            color: var(--tblr-btn-color-text);
+        }
+        #modal-success > div > div > div.modal-footer > div > div > div:nth-child(2) > a{
+            --tblr-blue: #206bc4;
+            --tblr-indigo: #4263eb;
+            --tblr-purple: #ae3ec9;
+            --tblr-pink: #d6336c;
+            --tblr-red: #d63939;
+            --tblr-orange: #f76707;
+            --tblr-yellow: #f59f00;
+            --tblr-green: #2fb344;
+            --tblr-teal: #0ca678;
+            --tblr-cyan: #17a2b8;
+            --tblr-white: #ffffff;
+            --tblr-gray: #475569;
+            --tblr-gray-dark: #1e293b;
+            --tblr-gray-100: #f1f5f9;
+            --tblr-gray-200: #e2e8f0;
+            --tblr-gray-300: #cbd5e1;
+            --tblr-gray-400: #94a3b8;
+            --tblr-gray-500: #64748b;
+            --tblr-gray-600: #475569;
+            --tblr-gray-700: #334155;
+            --tblr-gray-800: #1e293b;
+            --tblr-gray-900: #0f172a;
+            --tblr-primary: #206bc4;
+            --tblr-secondary: #626976;
+            --tblr-success: #2fb344;
+            --tblr-info: #4299e1;
+            --tblr-warning: #f76707;
+            --tblr-danger: #d63939;
+            --tblr-light: #fafbfc;
+            --tblr-dark: #1e293b;
+            --tblr-muted: #626976;
+            --tblr-primary-rgb: 32,107,196;
+            --tblr-secondary-rgb: 98,105,118;
+            --tblr-success-rgb: 47,179,68;
+            --tblr-info-rgb: 66,153,225;
+            --tblr-warning-rgb: 247,103,7;
+            --tblr-danger-rgb: 214,57,57;
+            --tblr-light-rgb: 250,251,252;
+            --tblr-dark-rgb: 30,41,59;
+            --tblr-muted-rgb: 98,105,118;
+            --tblr-white-rgb: 255,255,255;
+            --tblr-black-rgb: 0,0,0;
+            --tblr-body-color-rgb: 30,41,59;
+            --tblr-body-bg-rgb: 245,247,251;
+            --tblr-font-sans-serif: -apple-system,BlinkMacSystemFont,San Francisco,Segoe UI,Roboto,Helvetica Neue,sans-serif;
+            --tblr-font-monospace: Menlo,Monaco,Consolas,Liberation Mono,Courier New,monospace;
+            --tblr-gradient: linear-gradient(180deg, rgba(255, 255, 255, 0.15), rgba(255, 255, 255, 0));
+            --tblr-body-font-family: var(--tblr-font-sans-serif);
+            --tblr-body-font-size: 0.875rem;
+            --tblr-body-font-weight: 400;
+            --tblr-body-line-height: 1.4285714286;
+            --tblr-body-color: #1e293b;
+            --tblr-body-bg: #f5f7fb;
+            --tblr-card-bg: #ffffff;
+            --tblr-card-bg-rgb: 255,255,255;
+            --tblr-border-color: #e6e7e9;
+            --tblr-border-color-rgb: 230,231,233;
+            --tblr-border-color-light: #f2f3f4;
+            --tblr-border-color-light-rgb: 242,243,244;
+            font-family: var(--tblr-body-font-family);
+            -webkit-text-size-adjust: 100%;
+            -webkit-tap-highlight-color: transparent;
+            letter-spacing: 0;
+            text-rendering: optimizeLegibility;
+            font-feature-settings: "liga" 0;
+            -webkit-font-smoothing: antialiased;
+            pointer-events: auto;
+            --tblr-gutter-x: 1rem;
+            --tblr-gutter-y: 0;
+            box-sizing: border-box;
+            text-decoration: none;
+            text-decoration-skip-ink: auto;
+            font-weight: 500;
+            line-height: 1.4285714286;
+            text-align: center;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid transparent;
+            padding: .4375rem 1rem;
+            font-size: .875rem;
+            border-radius: 4px;
+            transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+            width: 100%!important;
+            --tblr-btn-color-text-rgb: var(--tblr-body-color-rgb);
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            white-space: nowrap;
+            background-color: var(--tblr-btn-color,var(--tblr-card-bg));
+            color: var(--tblr-btn-color-text);
+            border-color: rgba(98,105,118,.24);
+            --tblr-btn-color: #2fb344;
+            --tblr-btn-color-interactive: #2aa13d;
+            --tblr-btn-color-text: #fafbfc;
         }
     </style>
 </head>
@@ -357,7 +712,7 @@
         <div class="modal-content">
             <div class="modal-header">
                 <h5 class="modal-title">确认支付</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <button id="closePay" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
                 <div class="popup-cont">
@@ -368,7 +723,8 @@
                     </div>
                     <div class="epay">
                         <div class="scope-count t_Center c_Gray">应付 <strong class="total_price">¥ 21.4</strong><span
-                                class="hide-cny c_Gray f_16px">&nbsp;(<span class="total_price_custom">¥ 21.4</span>)</span></div>
+                                class="hide-cny c_Gray f_16px">&nbsp;(<span
+                                class="total_price_custom">¥ 21.4</span>)</span></div>
                         <div class="blank20"></div>
                         <h4 class="c_Gray">选择支付方式</h4>
                         <ul class="pay-method-list" style="height: 320px; overflow: hidden;">
@@ -416,7 +772,36 @@
                     <div class="coupon-container">
                     </div>
                     <div class="t_Center">
-                        <a href="javascript:void(0)" class="i_Btn pay-btn">确认付款</a>
+                        <a href="javascript:void(0)" id="sureToPay" class="i_Btn pay-btn">确认付款</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<button id="paySuccess" class="btn d-none" data-bs-toggle="modal" data-bs-target="#modal-success">
+    Success modal
+</button>
+<div class="modal modal-blur fade" id="modal-success" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-sm modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <button id="closeToRefresh" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            <div class="modal-status bg-success"></div>
+            <div class="modal-body text-center py-4">
+                <!-- Download SVG icon from http://tabler-icons.io/i/circle-check -->
+                <svg xmlns="http://www.w3.org/2000/svg" class="icon mb-2 text-green icon-lg" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><circle cx="12" cy="12" r="9" /><path d="M9 12l2 2l4 -4" /></svg>
+                <h3>Payment succedeed</h3>
+                <div class="text-muted">Your payment of $290 has been successfully submitted. Your invoice has been sent to support@tabler.io.</div>
+            </div>
+            <div class="modal-footer">
+                <div class="w-100">
+                    <div class="row">
+                        <div class="col"><a href="#" class="btn w-100" data-bs-dismiss="modal">
+                            Go to dashboard
+                        </a></div>
+                        <div class="col"><a href="#" class="btn btn-success w-100" data-bs-dismiss="modal">
+                            View invoice
+                        </a></div>
                     </div>
                 </div>
             </div>
@@ -430,6 +815,7 @@
 </html>
 <script th:src="@{/jquery/jquery-3.6.0.min.js}"></script>
 <script>
+    var userId = undefined;
     var currentPage = 1;
     var wearZoneParam = "";
     var conditionZoneParam = "";
@@ -451,14 +837,17 @@
             dataType: "json",
             //成功响应的结果
             success: function (data) {
-                if (data.code == 200) {
-                    console.log(data);
-                    render(data);
-                }
+                console.log(data);
+                render(data);
             }
         })
     }
-    function askForExteriorData(name){
+
+    $("#closeToRefresh")[0].addEventListener("click",function (){
+        console.log("22")
+        askForData(1, wearZoneParam, conditionZoneParam)
+    })
+    function askForExteriorData(name) {
         $.ajax({
             url: "/api/goods/getEveryExteriorGoods",
             type: "GET",
@@ -472,22 +861,48 @@
             dataType: "json",
             //成功响应的结果
             success: function (data) {
-                if (data.code == 200) {
-                    console.log(data);
-                    var allExteriorSpan = $(".exterior-form-selectgroup span")
-                    for (let i = 0; i <  allExteriorSpan.length; i++) {
-                        allExteriorSpan[i].setAttribute("onclick",'toGoodsExterior('+data.data[i].goods_id+')')
-                        allExteriorSpan[i].innerText = data.data[i].name + ' ￥ ' + data.data[i].price
-                    }
+                console.log("2222")
+                console.log(data);
+                var allExteriorSpan = $(".exterior-form-selectgroup span")
+                for (let i = 0; i < allExteriorSpan.length; i++) {
+                    allExteriorSpan[i].setAttribute("onclick", 'toGoodsExterior(' + data.tags[i].goods_id + ')')
+                    allExteriorSpan[i].innerText = data.tags[i].name + ' ￥ ' + data.tags[i].price
                 }
             }
         })
     }
+
     window.onload = function () {
         askForData(1)
+        userId = $("#user_detail")[0].getAttribute("data-userid");
     };
 
-    function toGoodsExterior(goodsId){
+    function sureToPay(userId,balance,itemId) {
+        $("#closePay").trigger("click");
+        $.ajax({
+            url: "/api/goods/payForGoodsItem",
+            type: "POST",
+            // data表示发送的数据
+            data: {
+                userId: userId,
+                accountBalance: balance,
+                itemId: itemId
+            },
+            // 定义发送请求的数据格式为JSON字符串
+            contentType: "application/x-www-form-urlencoded; charset=UTF-8",
+            //定义回调响应的数据格式为JSON字符串，该属性可以省略
+            dataType: "json",
+            //成功响应的结果
+            success: function (data) {
+                if (data.code == 200) {
+                    $("#paySuccess").trigger("click");
+                    $("#modal-success .text-muted")[0].innerText = `Your payment of ￥${data.msg} has been successfully submitted`
+                }
+            }
+        })
+    }
+
+    function toGoodsExterior(goodsId) {
         goodsIdForExterior = goodsId;
         $.ajax({
             url: "/api/goods/" + goodsId,
@@ -510,11 +925,12 @@
             }
         })
     }
-    function renderWeaponcase(data){
+
+    function renderWeaponcase(data) {
         conditionZoneParam = data.conditionZone;
         console.log($(".exterior-form-selectgroup"))
         $(".exterior-form-selectgroup")[0].style = 'display:none;'
-        var dataList = data.data.list;
+        var dataList = data.data.records;
         var sellDataLength = dataList.length;
         var detailInfo = dataList[0];
         if (!(dataList.length > 0)) {
@@ -571,47 +987,47 @@
             '                                        <th width="220" class="t_Left">操作</th>\n' +
             '                                    </tr>'
         for (let i = 0; i < sellDataLength; i++) {
-            tableSellDataStr += '<tr class="selling"><td></td>\n' +
-                '                                        <td class="img_td">\n' +
-                '                                            <div class="pic-cont item-detail-img"\n' +
-                '                                                 style="display: flex;background-image: url(https://buff.163.com/static/images/item_bg.png); background-position:center;">\n' +
-                '                                                <img class=""\n' +
-                '                                                     src="' + dataList[i].iconUrl + '"\n' +
-                '                                                     width="72" height="48"\n' +
-                '                                                     style="object-fit:contain;  max-width:80%; margin:auto;max-height:80% ">\n' +
-                '                                            </div>\n' +
-                '                                        </td>\n' +
-                '                                        <td class="t_Left">\n' +
-                '                                            <div class="name-cont wear">\n' +
-                '                                                <div class="csgo_value">\n' +
-                '                                                   <h3 class="show_sticker_false"><span class="textOne">'+ dataList[i].name +'</span></h3>\n' +
-                '                                                </div>\n' +
-                '                                            </div>\n' +
-                '                                        </td>\n' +
-                '                                        <td class="t_Left ">\n' +
-                '                                            <a href="javascript:void(0)"\n' +
-                '                                               class="j_shoptip_handler">\n' +
-                '                                                <img src="' + dataList[i].avatar + '"\n' +
-                '                                                     width="30" height="30" class="user-thum">\n' +
-                '                                                ' + dataList[i].nickname + '\n' +
-                '                                            </a>\n' +
-                '                                        </td>\n' +
-                '                                        <td class="t_Left">\n' +
-                '                                            <div style="display: table-cell;">\n' +
-                '                                                <strong class="f_Strong">￥' + dataList[i].price + '</strong>\n' +
-                '                                                <p class="hide-cny"><span class="c_Gray f_12px">(￥' + dataList[i].price + ')</span></p>\n' +
-                '                                            </div>\n' +
-                '                                            <div style="display: table-cell; vertical-align: middle; padding-left: 3px;">\n' +
-                '                                                <i class="icon icon_payment_alipay" style="margin-top:-3px;"\n' +
-                '                                                   title="支持BUFF余额-支付宝"></i>\n' +
-                '                                                <i class="icon icon_payment_others" style="margin-top:-3px;"\n' +
-                '                                                   title="支持BUFF余额-银行卡"></i>\n' +
-                '                                            </div>\n' +
-                '                                        </td>\n' +
-                '                                        <td class="t_Left">\n' +
-                '                                            <a href="javascript:void(0)" class="i_Btn i_Btn_mid2 btn-buy-order" data-bs-toggle="modal" data-bs-target="#modal-simple">购买</a>\n' +
-                '                                        </td>\n' +
-                '                                    </tr>'
+            tableSellDataStr += `<tr class="selling"><td></td>
+                                                        <td class="img_td">
+                                                            <div class="pic-cont item-detail-img"
+                                                                 style="display: flex;background-image: url(https://buff.163.com/static/images/item_bg.png); background-position:center;">
+                                                                <img class=""
+                                                                     src="${dataList[i].iconUrl}"
+                                                                     width="72" height="48"
+                                                                     style="object-fit:contain;  max-width:80%; margin:auto;max-height:80% ">
+                                                            </div>
+                                                        </td>
+                                                        <td class="t_Left">
+                                                            <div class="name-cont wear">
+                                                                <div class="csgo_value">
+                                                                   <h3 class="show_sticker_false"><span class="textOne">${dataList[i].name}</span></h3>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="t_Left ">
+                                                            <a href="javascript:void(0)"
+                                                               class="j_shoptip_handler">
+                                                                <img src="${dataList[i].avatar}"
+                                                                     width="30" height="30" class="user-thum">
+                                                                ${dataList[i].nickname}
+                                                            </a>
+                                                        </td>
+                                                        <td class="t_Left">
+                                                            <div style="display: table-cell;">
+                                                                <strong class="f_Strong">￥ ${dataList[i].price}</strong>
+                                                                <p class="hide-cny"><span class="c_Gray f_12px">(￥ ${dataList[i].price})</span></p>
+                                                            </div>
+                                                            <div style="display: table-cell; vertical-align: middle; padding-left: 3px;">
+                                                                <i class="icon icon_payment_alipay" style="margin-top:-3px;"
+                                                                   title="支持BUFF余额-支付宝"></i>
+                                                                <i class="icon icon_payment_others" style="margin-top:-3px;"
+                                                                   title="支持BUFF余额-银行卡"></i>
+                                                            </div>
+                                                        </td>
+                                                        <td class="t_Left">
+                                                            <a href="javascript:void(0)" class="i_Btn i_Btn_mid2 btn-buy-order" onclick="ackPay(${dataList[i].goodsId},${dataList[i].id},${dataList[i].price})" data-bs-toggle="modal" data-bs-target="#modal-simple">购买</a>
+                                                        </td>
+                                                    </tr>`
         }
         $(".list_tb_csgo")[0].innerHTML = tableSellDataStr;
         var pageInfo = data.data;
@@ -639,7 +1055,7 @@
         wearZoneParam = data.wearZone;
         conditionZoneParam = data.conditionZone;
         var keyword = data.keyword;
-        var dataList = data.data.list;
+        var dataList = data.data.items;
         var sellDataLength = dataList.length;
         var detailInfo = dataList[0];
         if (!(dataList.length > 0)) {
@@ -694,7 +1110,7 @@
                 "0.03-0.04",
                 "0.04-0.07",
             ]
-        }else if(keyword == "略有磨损") {
+        } else if (keyword == "略有磨损") {
             paintwear = [
                 "0.07-0.08",
                 "0.08-0.09",
@@ -702,7 +1118,7 @@
                 "0.10-0.11",
                 "0.11-0.15",
             ]
-        }else if (keyword == "久经沙场") {
+        } else if (keyword == "久经沙场") {
             paintwear = [
                 "0.15-0.18",
                 "0.18-0.21",
@@ -710,7 +1126,7 @@
                 "0.24-0.27",
                 "0.27-0.38",
             ]
-        }else if (keyword == "破损不堪") {
+        } else if (keyword == "破损不堪") {
             paintwear = [
                 "0.38-0.39",
                 "0.39-0.40",
@@ -718,7 +1134,7 @@
                 "0.41-0.42",
                 "0.42-0.45",
             ]
-        }else if (keyword == "战痕累累") {
+        } else if (keyword == "战痕累累") {
             paintwear = [
                 "0.45-0.50",
                 "0.50-0.63",
@@ -745,88 +1161,87 @@
             '                                        <th width="220" class="t_Left">操作</th>\n' +
             '                                    </tr>'
         for (let i = 0; i < sellDataLength; i++) {
-            tableSellDataStr += '<tr class="selling"><td></td>\n' +
-                '                                        <td class="img_td">\n' +
-                '                                            <div class="pic-cont item-detail-img"\n' +
-                '                                                 style="display: flex;background-image: url(https://buff.163.com/static/images/item_bg.png); background-position:center;">\n' +
-                '                                                <img class=""\n' +
-                '                                                     src="' + dataList[i].iconUrl + '"\n' +
-                '                                                     width="72" height="48"\n' +
-                '                                                     style="object-fit:contain;  max-width:80%; margin:auto;max-height:80% ">\n' +
-                '                                            </div>\n' +
-                '                                        </td>\n' +
-                '                                        <td class="t_Left">\n' +
-                '                                            <div class="name-cont wear">\n' +
-                '                                                <div class="csgo_value">\n' +
-                '                                                    <div class="wear-value">磨损: ' + dataList[i].paintwear + '</div>\n' +
-                '                                                    <div class="wear-pointer">\n' +
-                '                                                        <div class="wear-pointer-icon"\n' +
-                '                                                             style="left: ' + parseFloat(dataList[i].paintwear) * 100 + '%"></div>\n' +
-                '                                                    </div>\n' +
-                '                                                    <div class="progress" style="margin-bottom: 5px;">\n' +
-                '                                                        <div class="progress-bar progress-bar-fn" style="width: 7%;"\n' +
-                '                                                             title="崭新出厂"></div>\n' +
-                '                                                        <div class="progress-bar progress-bar-success"\n' +
-                '                                                             style="width: 8%;"\n' +
-                '                                                             title="略有磨损"></div>\n' +
-                '                                                        <div class="progress-bar progress-bar-warning"\n' +
-                '                                                             style="width: 23%;"\n' +
-                '                                                             title="久经沙场"></div>\n' +
-                '                                                        <div class="progress-bar progress-bar-danger" style="width: 7%;"\n' +
-                '                                                             title="破损不堪"></div>\n' +
-                '                                                        <div class="progress-bar progress-bar-bs" style="width: 55%;"\n' +
-                '                                                             title="战痕累累"></div>\n' +
-                '                                                    </div>\n' +
-                '                                                </div>\n' +
-                '                                            </div>\n' +
-                '                                        </td>\n' +
-                '                                        <td class="t_Left ">\n' +
-                '                                            <a href="javascript:void(0)"\n' +
-                '                                               class="j_shoptip_handler">\n' +
-                '                                                <img src="' + dataList[i].avatar + '"\n' +
-                '                                                     width="30" height="30" class="user-thum">\n' +
-                '                                                ' + dataList[i].nickname + '\n' +
-                '                                            </a>\n' +
-                '                                        </td>\n' +
-                '                                        <td class="t_Left">\n' +
-                '                                            <div style="display: table-cell;">\n' +
-                '                                                <strong class="f_Strong">￥' + dataList[i].price + '</strong>\n' +
-                '                                                <p class="hide-cny"><span class="c_Gray f_12px">(￥' + dataList[i].price + ')</span></p>\n' +
-                '                                            </div>\n' +
-                '                                            <div style="display: table-cell; vertical-align: middle; padding-left: 3px;">\n' +
-                '                                                <i class="icon icon_payment_alipay" style="margin-top:-3px;"\n' +
-                '                                                   title="支持BUFF余额-支付宝"></i>\n' +
-                '                                                <i class="icon icon_payment_others" style="margin-top:-3px;"\n' +
-                '                                                   title="支持BUFF余额-银行卡"></i>\n' +
-                '                                            </div>\n' +
-                '                                        </td>\n' +
-                '                                        <td class="t_Left">\n' +
-                '                                            <a href="javascript:void(0)" class="i_Btn i_Btn_mid2 btn-buy-order" onclick="ackPay('+dataList[i].id+','+dataList[i].price+')" data-bs-toggle="modal" data-bs-target="#modal-simple">购买</a>\n' +
-                '                                        </td>\n' +
-                '                                    </tr>'
-        }
-        $(".list_tb_csgo")[0].innerHTML = tableSellDataStr;
-        var pageInfo = data.data;
-        var pageDataStr = ""
-        if (pageInfo.isFirstPage)
-            pageDataStr += '<li class="disabled"><span class="current prev">上一页</span></li>'
-        else
-            pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + pageInfo.prePage + ')" class="page-link prev">上一页</a></li>'
+            tableSellDataStr += `<tr class="selling"><td></td>
+                                                        <td class="img_td">
+                                                            <div class="pic-cont item-detail-img"
+                                                                 style="display: flex;background-image: url(https://buff.163.com/static/images/item_bg.png); background-position:center;">
+                                                                <img class=""
+                                                                     src="${dataList[i].iconUrl}"
+                                                                     width="72" height="48"
+                                                                     style="object-fit:contain;  max-width:80%; margin:auto;max-height:80% ">
+                                                            </div>
+                                                        </td>
+                                                        <td class="t_Left">
+                                                            <div class="name-cont wear">
+                                                                <div class="csgo_value">
+                                                                    <div class="wear-value">磨损: ${dataList[i].paintwear}</div>
+                                                                    <div class="wear-pointer">
+                                                                        <div class="wear-pointer-icon"
+                                                                             style="left: ${parseFloat(dataList[i].paintwear) * 100}%"></div>
+                                                                    </div>
+                                                                    <div class="progress" style="margin-bottom: 5px;">
+                                                                        <div class="progress-bar progress-bar-fn" style="width: 7%;"
+                                                                             title="崭新出厂"></div>
+                                                                        <div class="progress-bar progress-bar-success"
+                                                                             style="width: 8%;"
+                                                                             title="略有磨损"></div>
+                                                                        <div class="progress-bar progress-bar-warning"
+                                                                             style="width: 23%;"
+                                                                             title="久经沙场"></div>
+                                                                        <div class="progress-bar progress-bar-danger" style="width: 7%;"
+                                                                             title="破损不堪"></div>
+                                                                        <div class="progress-bar progress-bar-bs" style="width: 55%;"
+                                                                             title="战痕累累"></div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </td>
+                                                        <td class="t_Left ">
+                                                            <a href="javascript:void(0)"
+                                                               class="j_shoptip_handler">
+                                                                <img src="${dataList[i].avatar}"
+                                                                     width="30" height="30" class="user-thum">
+                                                                ${dataList[i].nickname}
+                                                            </a>
+                                                        </td>
+                                                        <td class="t_Left">
+                                                            <div style="display: table-cell;">
+                                                                <strong class="f_Strong">￥ ${dataList[i].price}</strong>
+                                                                <p class="hide-cny"><span class="c_Gray f_12px">(￥ ${dataList[i].price})</span></p>
+                                                            </div>
+                                                            <div style="display: table-cell; vertical-align: middle; padding-left: 3px;">
+                                                                <i class="icon icon_payment_alipay" style="margin-top:-3px;"
+                                                                   title="支持BUFF余额-支付宝"></i>
+                                                                <i class="icon icon_payment_others" style="margin-top:-3px;"
+                                                                   title="支持BUFF余额-银行卡"></i>
+                                                            </div>
+                                                        </td>
+                                                        <td class="t_Left">
+                                                            <a href="javascript:void(0)" class="i_Btn i_Btn_mid2 btn-buy-order" onclick="ackPay(${dataList[i].goodsId},${dataList[i].id},${dataList[i].price})" data-bs-toggle="modal" data-bs-target="#modal-simple">购买</a>
+                                                        </td>
+                                                    </tr>`
+            $(".list_tb_csgo")[0].innerHTML = tableSellDataStr;
+            var pageInfo = data.data;
+            var pageDataStr = ""
+            if (pageInfo.isFirstPage)
+                pageDataStr += '<li class="disabled"><span class="current prev">上一页</span></li>'
+            else
+                pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + pageInfo.prePage + ')" class="page-link prev">上一页</a></li>'
 
-        for (let currentPageNum = 1; currentPageNum <= pageInfo.navigatepageNums.length; currentPageNum++) {
-            if (pageInfo.pageNum == currentPageNum) {
-                currentPage = currentPageNum;
-                pageDataStr += '<li class="active"><span class="current">' + currentPageNum + '</span></li>';
-            } else
-                pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + currentPageNum + ')" className="page-link">' + currentPageNum + '</a></li>'
+            for (let currentPageNum = 1; currentPageNum <= pageInfo.navigatePageNums.length; currentPageNum++) {
+                if (pageInfo.pageNum == currentPageNum) {
+                    currentPage = currentPageNum;
+                    pageDataStr += '<li class="active"><span class="current">' + currentPageNum + '</span></li>';
+                } else
+                    pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + currentPageNum + ')" className="page-link">' + currentPageNum + '</a></li>'
+            }
+            if (pageInfo.isLastPage)
+                pageDataStr += '<li class="disabled"><span class="current next">下一页</span></li>'
+            else
+                pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + pageInfo.nextPage + ')" class="page-link next">下一页</a></li>'
+            $('.simple-pagination ul')[0].innerHTML = pageDataStr;
         }
-        if (pageInfo.isLastPage)
-            pageDataStr += '<li class="disabled"><span class="current next">下一页</span></li>'
-        else
-            pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + pageInfo.nextPage + ')" class="page-link next">下一页</a></li>'
-        $('.simple-pagination ul')[0].innerHTML = pageDataStr;
     }
-
     function toPageNum(pageNum) {
         askForData(pageNum, wearZoneParam, conditionZoneParam)
     }
@@ -859,7 +1274,7 @@
         }
 
     }
-    function ackPay(id,price){
+    function ackPay(goods_id,item_id,price){
         var userId = $("#user_detail")[0].getAttribute("data-userid");
         var accountBalance = 0;
         $.ajax({
@@ -876,15 +1291,15 @@
                     accountBalance = data.data.balance;
                     $("h5.f_16px > span.c_Blue")[0].innerText = '￥ ' + accountBalance;
                     if(accountBalance < price){
-                        console.log(accountBalance)
-                        console.log(price)
+                        $(".total_price")[0].innerText = '¥'  + price;
+                        $(".total_price_custom")[0].innerText = '¥'  + price;
                         var payTagStr = '<a href="javascript:void(0)" class="i_Btn pay-btn" onclick="toRecharge()">前往充值</a>'
                         $(".t_Center")[2].innerHTML = payTagStr;
+                        return;
                     }
-                    console.log(id)
-                    console.log(price);
                     $(".total_price")[0].innerText = '¥'  + price;
                     $(".total_price_custom")[0].innerText = '¥'  + price;
+                    $("#sureToPay")[0].setAttribute("onclick",`sureToPay('${userId}',${accountBalance},${item_id})`)
                 }
             }
         })
@@ -896,7 +1311,6 @@
     // 略磨
     function wearZoneForEachPaintWear(data) {
         var grindDataStr = "";
-        console.log(wearZoneParam);
         if (wearZoneParam == "不限")
             wearZoneParam = "磨损区间"
         grindDataStr += '<button data-bs-toggle="dropdown" type="button"\n' +

@@ -1,9 +1,7 @@
 package com.electronic.boot.controller;
 
-import com.electronic.boot.bean.OrnamentSellRecord;
 import com.electronic.boot.service.OrnamentSellRecordService;
 import com.electronic.boot.util.BitResult;
-import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,7 +20,8 @@ public class OrnamentSellRecordController {
     public BitResult getAllOrnamentSellRecordsByPage(@RequestParam("userId") String userId,
                                                          @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
                                                          @RequestParam(value = "pageSize", required = false, defaultValue = "5") Integer pageSize){
-        PageInfo<OrnamentSellRecord> allOrnamentSellRecordsByPage = ornamentSellRecordService.getAllOrnamentSellRecordsByPage(userId,pageNum, pageSize);
-        return new BitResult(allOrnamentSellRecordsByPage).success("ok");
+
+        return ornamentSellRecordService.getAllOrnamentSellRecordsAsPage(userId,pageNum, pageSize);
     }
+
 }

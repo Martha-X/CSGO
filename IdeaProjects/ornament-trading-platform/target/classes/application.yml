@@ -1,18 +1,22 @@
+# DataSource Config
 spring:
+  # 配置数据源信息
   datasource:
-    url: jdbc:mysql://localhost:3306/csgo
-    username: root
-    password: 123456
+    # 配置数据源类型
+    type: com.alibaba.druid.pool.DruidDataSource
+    # MySQL8.0+的驱动类全类名
     driver-class-name: com.mysql.cj.jdbc.Driver
+    # MySQL数据库地址
+    url: jdbc:mysql://localhost:3306/csgo?serverTimezone=GMT%2B8&characterEncoding=utf-8&useSSL=false
+    # MySQL用户名
+    username: root
+    # MySQL密码
+    password: 123456
 
-mybatis:
+# MyBatisPlus Config
+mybatis-plus:
+  # Mapper映射文件所在目录
+  mapper-locations: classpath:/mapper/**
   configuration:
-    map-underscore-to-camel-case: true
-  mapper-locations: classpath:mapper/*.xml
-
-#分页插件
-pagehelper:
-  helper-dialect: mysql
-  reasonable: true
-  support-methods-arguments: true
-  params: count=countSql
+    # MyBatisPlus日志开启
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl

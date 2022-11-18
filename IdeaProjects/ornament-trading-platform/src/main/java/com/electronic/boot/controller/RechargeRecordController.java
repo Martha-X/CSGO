@@ -3,7 +3,6 @@ package com.electronic.boot.controller;
 import com.electronic.boot.bean.RechargeRecord;
 import com.electronic.boot.service.RechargeRecordService;
 import com.electronic.boot.util.BitResult;
-import com.github.pagehelper.PageInfo;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -24,8 +23,7 @@ public class RechargeRecordController {
     public BitResult getAllRechargeRecord(@PathVariable("id") String userId,
                                           @RequestParam(value = "pageNum", required = false, defaultValue = "1") Integer pageNum,
                                           @RequestParam(value = "pageSize", required = false, defaultValue = "5") Integer pageSize) {
-        PageInfo<RechargeRecord> allRechargeRecord = rechargeRecordService.getAllRechargeRecord(userId, pageNum, pageSize);
-        return new BitResult(allRechargeRecord).success("ok");
+        return rechargeRecordService.getAllRechargeRecordAsPage(userId, pageNum, pageSize);
     }
 
     @RequestMapping("/dealRechargeRecordWithSuccess")
@@ -58,7 +56,7 @@ public class RechargeRecordController {
             log.info("*****************************************************************************");
             log.info("{}", "执行余额操作");
             try {
-                rechargeRecordService.insertRechargeRecord(userId,rechargeRecord);
+                rechargeRecordService.insertRechargeRecord(userId, rechargeRecord);
             } catch (Exception e) {
                 e.printStackTrace();
             }

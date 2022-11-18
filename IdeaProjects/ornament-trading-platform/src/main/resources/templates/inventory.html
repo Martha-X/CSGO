@@ -13,7 +13,8 @@
         body > div > div.page-wrapper > div.page-body > div > div > div.detail-tab-cont * {
             box-sizing: content-box;
         }
-        .page-title{
+
+        .page-title {
             color: #fff6e9;
         }
     </style>
@@ -370,14 +371,14 @@
                         </div>
                         <div class="pager card-pager light-theme simple-pagination">
                             <ul>
-<!--                                <li class="disabled"><span class="current prev">上一页</span></li>-->
-<!--                                <li class="active"><span class="current">1</span></li>-->
-<!--                                <li><a href="https://buff.163.com/market/steam_inventory?game=csgo#page_num=2"-->
-<!--                                       class="page-link">2</a>-->
-<!--                                </li>-->
-<!--                                <li><a href="https://buff.163.com/market/steam_inventory?game=csgo#page_num=2"-->
-<!--                                       class="page-link next">下一页</a>-->
-<!--                                </li>-->
+                                <!--                                <li class="disabled"><span class="current prev">上一页</span></li>-->
+                                <!--                                <li class="active"><span class="current">1</span></li>-->
+                                <!--                                <li><a href="https://buff.163.com/market/steam_inventory?game=csgo#page_num=2"-->
+                                <!--                                       class="page-link">2</a>-->
+                                <!--                                </li>-->
+                                <!--                                <li><a href="https://buff.163.com/market/steam_inventory?game=csgo#page_num=2"-->
+                                <!--                                       class="page-link next">下一页</a>-->
+                                <!--                                </li>-->
                             </ul>
                         </div>
                         <div class="blank20"></div>
@@ -439,12 +440,14 @@
 <script th:src="@{jquery/jquery-3.6.0.min.js}"></script>
 <script>
     var userId = undefined;
+    var cantChoseNum = 0;
+
     window.onload = function () {
         userId = $("#user_detail")[0].getAttribute("data-userid");
         askForInventoryData(userId, 1, 10);
     }
 
-    $("#refresh")[0].addEventListener("click",function(){
+    $("#refresh")[0].addEventListener("click", function () {
         askForInventoryData(userId, 1, 10);
     });
 
@@ -471,32 +474,40 @@
     }
 
     function renderData(data) {
-        var dataList = data.data.list;
+        var dataList = data.data.items;
         var dataListLength = dataList.length;
         alreadyChoose(0, dataListLength)
-        var totalPrice = 0;
         var inventoryDataStr = ""
         for (let i = 0; i < dataListLength; i++) {
             var paintwear = dataList[i].paintwear;
             var price = dataList[i].price
-            totalPrice += price;
+            var isOnSale = "";
+            var canCheck = '<i class="icon icon_check"></i>'
+            var salable = "salable";
+            if (!dataList[i].isSoldOut){
+                isOnSale = `<span class="l_Right f_12px selling c_Gray" style="display: block">出售中</span>`
+                canCheck = "";
+                salable = "unsalable";
+                cantChoseNum++;
+            }
             if (paintwear === "")
-                inventoryDataStr += `<li class="salable my_inventory nowear" data-index="${i}" data-id="${dataList[i].id}">
+                inventoryDataStr += `<li class="${salable} my_inventory nowear" data-index="${i}" data-id="${dataList[i].id}">
                                         <a href="javascript:void(0)" class="img img_a item-detail-img"
                                            style="background-image: url(https://buff.163.com/static/images/item_bg.png); background-position:center;">
                                             <img class="" src="${dataList[i].iconUrl}" style="object-fit:contain;">
                                         </a>
                                         <h3><a style="cursor: pointer;" href="http://localhost:8080/goods/${dataList[i].goodsId}">${dataList[i].name}</a></h3>
                                         <p style="line-height:18.5px;">
+                                            ${isOnSale}
                                             <strong class="f_Strong">¥ ${price}</strong>
                                         </p>
-                                        <i class="icon icon_check"></i>
+                                        ${canCheck}
                                         <div class="tagBox">
                                             <span class="tag tag_black rarity_${dataList[i].rarityInternalName}">${dataList[i].rarityLocalizedName}</span>
                                         </div>
                                     </li>`
             else
-                inventoryDataStr += `<li class="salable my_inventory" data-index="${i}" data-id="${dataList[i].id}">
+                inventoryDataStr += `<li class="${salable} my_inventory" data-index="${i}" data-id="${dataList[i].id}">
                                         <a href="javascript:void(0)" class="img img_a item-detail-img"
                                            style="background-image: url(https://buff.163.com/static/images/item_bg.png); background-position:center;">
                                             <img class="" src="${dataList[i].iconUrl}" style="object-fit:contain;">
@@ -516,9 +527,10 @@
                                         </div>
                                         <h3><a style="cursor: pointer;" href="http://localhost:8080/goods/${dataList[i].goodsId}">${dataList[i].name}</a></h3>
                                         <p style="line-height:18.5px;">
+                                            ${isOnSale}
                                             <strong class="f_Strong">¥ ${price}</strong>
                                         </p>
-                                        <i class="icon icon_check"></i>
+                                        ${canCheck}
                                         <div class="tagBox">
                                             <span class="tag tag_csgo_${dataList[i].exteriorInternalName}">${dataList[i].exteriorLocalizedName}</span>
                                             <span class="tag tag_gray2 j_tips_handler" data-direction="bottom"
@@ -527,34 +539,35 @@
                                     </li>`
         }
         $(".brief-info")[0].innerHTML = `<span>件数：<strong class="c_Yellow f_Normal">${dataListLength}</strong> 估值：<strong
-                                    class="c_Yellow f_Normal">¥ ${totalPrice}</strong></span>`
+                                    class="c_Yellow f_Normal">¥ ${data.briefInfo}</strong></span>`
         $("#j_list_card > ul")[0].innerHTML = inventoryDataStr;
         var inventoryCard = $("#j_list_card > ul li");
         console.log(inventoryCard)
         for (let i = 0; i < inventoryCard.length; i++) {
             inventoryCard[i].addEventListener("click", function () {
                 var tagClass = this.getAttribute("class");
-                var index = tagClass.indexOf(" on");
-                if (index != -1)
-                    this.setAttribute("class", `${tagClass.substring(0, index)}`)
-                else
-                    this.setAttribute("class", `${tagClass} on`)
-                alreadyChoose()
+                if(tagClass.indexOf("unsal") == -1){
+                    var index = tagClass.indexOf(" on");
+                    if (index != -1)
+                        this.setAttribute("class", `${tagClass.substring(0, index)}`)
+                    else
+                        this.setAttribute("class", `${tagClass} on`)
+                    alreadyChoose()
+                }
             });
         }
-        var navigatepageNums = data.data.navigatepageNums;
-
+        var navigatePageNums = data.data.navigatePageNums;
         var pageInfo = data.data;
         var pageDataStr = ""
-        if (navigatepageNums.length == 1) {
+        if (navigatePageNums.length == 1) {
             $(".pager")[0].style = "display:none";
-        }else{
+        } else {
             if (pageInfo.isFirstPage)
                 pageDataStr += '<li class="disabled"><span class="current prev">上一页</span></li>'
             else
                 pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + pageInfo.prePage + ')" class="page-link prev">上一页</a></li>'
 
-            for (let currentPageNum = 1; currentPageNum <= pageInfo.navigatepageNums.length; currentPageNum++) {
+            for (let currentPageNum = 1; currentPageNum <= navigatePageNums.length; currentPageNum++) {
                 if (pageInfo.pageNum == currentPageNum) {
                     currentPage = currentPageNum;
                     pageDataStr += '<li class="active"><span class="current">' + currentPageNum + '</span></li>';
@@ -576,14 +589,18 @@
             this.setAttribute("class", `on`)
             for (let i = 0; i < inventoryCard.length; i++) {
                 var tagClass = inventoryCard[i].getAttribute("class");
-                tagClass.indexOf("on") == -1 ? inventoryCard[i].setAttribute("class", `${tagClass} on`) : ""
+                if(tagClass.indexOf("unsal") == -1){
+                    tagClass.indexOf("on") == -1 ? inventoryCard[i].setAttribute("class", `${tagClass} on`) : ""
+                }
             }
         } else {
             this.removeAttribute("class")
             for (let i = 0; i < inventoryCard.length; i++) {
                 var tagClass = inventoryCard[i].getAttribute("class");
-                var index = tagClass.indexOf(" on");
-                tagClass.indexOf("on") != -1 ? inventoryCard[i].setAttribute("class", `${tagClass.substring(0, index)}`) : ""
+                if(tagClass.indexOf("unsal") == -1) {
+                    var index = tagClass.indexOf(" on");
+                    tagClass.indexOf("on") != -1 ? inventoryCard[i].setAttribute("class", `${tagClass.substring(0, index)}`) : ""
+                }
             }
         }
         alreadyChoose()
@@ -601,11 +618,17 @@
                 var tagClass = eachLi[i].getAttribute("class");
                 tagClass.indexOf(" on") != -1 ? choseNum++ : "";
             }
-            alreadyChoose(choseNum,total)
+            alreadyChoose(choseNum, total)
+        }
+        // 若库存商品被选择的数量等于库存总数减去不可选择的数量，则将全选按钮主动激活，否则不激活
+        if (choseNum == (total-cantChoseNum)) {
+            $(".l_Right .w-Checkbox > span")[0].setAttribute("class", "on")
+        } else {
+            $(".l_Right .w-Checkbox > span")[0].removeAttribute("class")
         }
     }
 
-    function toPageNum(pageNum){
-        askForInventoryData(userId,pageNum,10)
+    function toPageNum(pageNum) {
+        askForInventoryData(userId, pageNum, 10)
     }
 </script>

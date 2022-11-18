@@ -1,25 +1,20 @@
 package com.electronic.boot.mapper;
 
 import com.electronic.boot.bean.User;
-import com.electronic.boot.bean.UserExample;
-import org.apache.ibatis.annotations.Param;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
+/**
+* @author Administrator
+* @description 针对表【user】的数据库操作Mapper
+* @createDate 2022-11-18 22:32:19
+* @Entity com.electronic.boot.bean.User
+*/
 @Repository
-public interface UserMapper {
-    long countByExample(UserExample example);
+public interface UserMapper extends BaseMapper<User> {
 
-    int deleteByExample(UserExample example);
-
-    int insert(User record);
-
-    int insertSelective(User record);
-
-    List<User> selectByExample(UserExample example);
-
-    int updateByExampleSelective(@Param("record") User record, @Param("example") UserExample example);
-
-    int updateByExample(@Param("record") User record, @Param("example") UserExample example);
 }
+
+
+
+

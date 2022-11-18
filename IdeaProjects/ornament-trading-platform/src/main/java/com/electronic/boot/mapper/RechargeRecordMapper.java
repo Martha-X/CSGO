@@ -1,25 +1,20 @@
 package com.electronic.boot.mapper;
 
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 import com.electronic.boot.bean.RechargeRecord;
-import com.electronic.boot.bean.RechargeRecordExample;
-import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
+/**
+* @author Administrator
+* @description 针对表【recharge_record】的数据库操作Mapper
+* @createDate 2022-11-18 23:28:09
+* @Entity com.electronic.boot.bean.RechargeRecord
+*/
 @Repository
-public interface RechargeRecordMapper {
-    long countByExample(RechargeRecordExample example);
+public interface RechargeRecordMapper extends BaseMapper<RechargeRecord> {
 
-    int deleteByExample(RechargeRecordExample example);
-
-    int insert(RechargeRecord record);
-
-    int insertSelective(RechargeRecord record);
-
-    List<RechargeRecord> selectByExample(RechargeRecordExample example);
-
-    int updateByExampleSelective(@Param("record") RechargeRecord record, @Param("example") RechargeRecordExample example);
-
-    int updateByExample(@Param("record") RechargeRecord record, @Param("example") RechargeRecordExample example);
 }
+
+
+
+

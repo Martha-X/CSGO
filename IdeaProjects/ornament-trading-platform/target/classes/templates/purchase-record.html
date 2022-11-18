@@ -496,7 +496,7 @@
     }
 
     function renderData(data) {
-        var dataList = data.data.list;
+        var dataList = data.data.items;
         var purchaseDataStr = ""
         for (let i = 0; i < dataList.length; i++) {
             purchaseDataStr += `<tr id="${dataList[i].id}">
@@ -531,7 +531,7 @@
         }
         $(".list_tb_csgo")[0].innerHTML = purchaseDataStr;
         var pageInfo = data.data;
-        var navigatepageNums = pageInfo.navigatepageNums;
+        var navigatepageNums = pageInfo.navigatePageNums;
         var pageDataStr = ""
         if (navigatepageNums.length == 1) {
             $(".pager")[0].style = "display:none";

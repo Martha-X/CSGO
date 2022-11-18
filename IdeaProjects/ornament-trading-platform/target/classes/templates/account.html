@@ -325,7 +325,7 @@
     };
 
     function renderUserData(data){
-        var data = data.data;
+        var data = data.tags;
         $(".my-thum > img")[0].src = data.avatar;
         $(".my-thum .username")[0].innerText = data.username
         $("#alipay_amount")[0].innerText = '￥ ' + data.balance
@@ -333,7 +333,7 @@
 
     function renderRechargeData(data){
         var pageInfo = data.data;
-        var dataList = pageInfo.list;
+        var dataList = pageInfo.items;
         rechargeDataStr = '<tbody>\n' +
             '                                    <tr class="t_Center">\n' +
             '                                        <th width="230">流水号</th>\n' +
@@ -359,7 +359,7 @@
         else
             pageDataStr += '<li><a href="javascript:void(0)" onclick="toPageNum(' + pageInfo.prePage + ')" class="page-link prev">上一页</a></li>'
 
-        for (let currentPageNum = 1; currentPageNum <= pageInfo.navigatepageNums.length; currentPageNum++) {
+        for (let currentPageNum = 1; currentPageNum <= pageInfo.navigatePageNums.length; currentPageNum++) {
             if (pageInfo.pageNum == currentPageNum) {
                 currentPage = currentPageNum;
                 pageDataStr += '<li class="active"><span class="current">' + currentPageNum + '</span></li>';
